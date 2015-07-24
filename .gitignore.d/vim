@@ -1,0 +1,5 @@
+*
+!/.ctags
+!/.gitignore.d
+!/.gitignore.d/vim
+!/.nvimrc
