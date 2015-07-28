@@ -577,7 +577,7 @@ let g:rubycomplete_rails = 1
 augroup vimrc-ruby
   autocmd!
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType ruby setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
 "" Enable automatic word wrapping
