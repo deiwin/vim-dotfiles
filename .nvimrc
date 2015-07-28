@@ -320,9 +320,8 @@ cnoreabbrev Qall qall
 "nnoremap <silent> <F2> :NERDTreeFind<CR>
 "noremap <F3> :NERDTreeToggle<CR>
 
-" grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
-let Grep_Default_Options = '-IRE'
+" Ag
+nnoremap <leader>f :Ag <C-R><C-W>
 
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
