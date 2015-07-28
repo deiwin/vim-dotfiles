@@ -96,6 +96,15 @@ NeoBundle "xolox/vim-misc"
 "NeoBundle "xolox/vim-easytags"
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+        \ }
+     \ }
+let g:neobundle#install_process_timeout = 1500
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
