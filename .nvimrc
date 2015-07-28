@@ -508,7 +508,9 @@ noremap <leader>wr <C-w>r
 "nnoremap <C-S-j> :wincmd J<cr>
 
 "" Close buffer
-noremap <leader>c :bd<CR>
+" Open a previously edited buffer and then close the buffer we just moved away
+" from. This avoids closing the split due to closing the buffer.
+noremap <leader>c :b#\|bd #<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
