@@ -105,6 +105,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
         \ }
      \ }
 let g:neobundle#install_process_timeout = 1500
+NeoBundle 'junegunn/limelight.vim'
+nmap <silent> <leader>l :Limelight!!<CR>
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
