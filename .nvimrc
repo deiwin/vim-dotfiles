@@ -41,7 +41,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 "NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-vinegar'
+" wait until this gets fixed: https://github.com/tpope/vim-vinegar/issues/13
+" meanwhile use filebeagle instead
+"NeoBundle 'tpope/vim-vinegar'
+" To avoid filebeagle mapping <leader>f, suppress keymaps and then remap rest
+NeoBundle 'jeetsukumaran/vim-filebeagle'
+let g:filebeagle_suppress_keymaps = 1
+map <silent> - <Plug>FileBeagleOpenCurrentBufferDir
+
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
