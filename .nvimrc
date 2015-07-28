@@ -568,12 +568,12 @@ augroup vimrc-ruby
   autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
-
 "" Enable automatic word wrapping
-:set formatoptions+=t
+set formatoptions+=t
 
 
 "" Include user's local vim config
 if filereadable(expand("~/.nvimrc.local"))
   source ~/.nvimrc.local
 endif
+
