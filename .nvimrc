@@ -531,7 +531,7 @@ nmap <silent> <C-t> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 let g:gutentags_project_root = ['package.json', 'Brocfile.js', 'Capfile', 'Rakefile', 'bower.json', '.ruby-version', 'Gemfile']
-let g:gutentags_cache_dir = "~/.gutentags"
+"let g:gutentags_cache_dir = ".gutentags"
 
 "let g:easytags_async           = 1
 "let g:easytags_auto_highlight  = 1
