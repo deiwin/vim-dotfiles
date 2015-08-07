@@ -320,8 +320,10 @@ cnoreabbrev Qall qall
 "nnoremap <silent> <F2> :NERDTreeFind<CR>
 "noremap <F3> :NERDTreeToggle<CR>
 
-" Ag
+"" Ag
 nnoremap <leader>f :Ag <C-R><C-W>
+" yank the current visual selection and insert it as the search term
+vnoremap <leader>f y:<C-u>Ag "<C-r>0"<space>
 
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
