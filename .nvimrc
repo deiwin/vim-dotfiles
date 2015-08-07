@@ -383,10 +383,11 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-"" coffee
-augroup vimrc-coffee
+"" js/coffee
+augroup vimrc-js
   autocmd!
   autocmd FileType coffee setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
+  autocmd FileType javascript setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
 set autoread
