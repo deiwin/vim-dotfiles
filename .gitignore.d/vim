@@ -3,5 +3,6 @@
 !/.gitignore.d
 !/.gitignore.d/vim
 !/.nvimrc
+!/.vimrc
 !/bin
 !/bin/run_tests_tmux
