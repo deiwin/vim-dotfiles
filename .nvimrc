@@ -111,6 +111,8 @@ nmap <silent> <leader>l :Limelight!!<CR>
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
 NeoBundle "fatih/vim-go"
+" Fix vim-go leaving scratch buffers open
+autocmd CompleteDone * pclose
 
 
 "" Javascript Bundle
