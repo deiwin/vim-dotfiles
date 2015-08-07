@@ -106,6 +106,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \ }
 let g:neobundle#install_process_timeout = 1500
 NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
