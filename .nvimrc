@@ -40,7 +40,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "*****************************************************************************
 "" NeoBundle install packages
 "*****************************************************************************
-"NeoBundle 'scrooloose/nerdtree'
 " wait until this gets fixed: https://github.com/tpope/vim-vinegar/issues/13
 " meanwhile use filebeagle instead
 "NeoBundle 'tpope/vim-vinegar'
@@ -93,7 +92,6 @@ let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 "" Custom bundles
 NeoBundle "xolox/vim-misc"
-"NeoBundle "xolox/vim-easytags"
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'Valloric/YouCompleteMe', {
@@ -314,18 +312,6 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" NERDTree configuration
-"let g:NERDTreeChDirMode=2
-"let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-"let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-"let g:NERDTreeShowBookmarks=1
-"let g:nerdtree_tabs_focus_on_files=1
-"let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-"let g:NERDTreeWinSize = 20
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-"nnoremap <silent> <F2> :NERDTreeFind<CR>
-"noremap <F3> :NERDTreeToggle<CR>
-
 "" Ag
 nnoremap <leader>f :Ag <C-R><C-W>
 " yank the current visual selection and insert it as the search term
@@ -419,12 +405,6 @@ nnoremap <leader>ss :SaveSession
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
-"" Tabs
-" Disabled because they break <C-I> jumping
-"nnoremap <Tab> gt
-"nnoremap <S-Tab> gT
-"nnoremap <silent> <S-t> :tabnew<CR>
-
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
@@ -487,7 +467,6 @@ if has('unnamedplus')
 endif
 
 noremap YY "+y<CR>
-"noremap P "+gP<CR>
 noremap XX "+x<CR>
 
 if has('macunix')
@@ -543,16 +522,6 @@ nmap <silent> <C-t> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 let g:gutentags_project_root = ['package.json', 'Brocfile.js', 'Capfile', 'Rakefile', 'bower.json', '.ruby-version', 'Gemfile']
-"let g:gutentags_cache_dir = ".gutentags"
-
-"let g:easytags_async           = 1
-"let g:easytags_auto_highlight  = 1
-"set tags=./.tags;
-"let g:easytags_dynamic_files = 1
-"let g:easytags_opts = ['--options=$HOME/.ctags.conf']
-"let g:easytags_languages       = {
-"			\   'coffee': {}
-"			\}
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
