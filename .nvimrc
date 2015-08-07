@@ -109,6 +109,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+NeoBundle 'tmux-plugins/vim-tmux'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
