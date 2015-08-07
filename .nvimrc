@@ -106,7 +106,6 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \ }
 let g:neobundle#install_process_timeout = 1500
 NeoBundle 'junegunn/limelight.vim'
-nmap <silent> <leader>l :Limelight!!<CR>
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
@@ -594,6 +593,10 @@ set formatoptions+=t
 if filereadable(expand("~/.nvimrc.local"))
   source ~/.nvimrc.local
 endif
+
+"" Limelight
+nmap <silent> <leader>l :Limelight!!<CR>
+vmap <silent> <leader>l :Limelight!!<CR>
 
 "" Run tests in a tmux split
 command! -nargs=1 Silent
