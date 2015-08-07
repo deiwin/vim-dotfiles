@@ -598,6 +598,11 @@ endif
 nmap <silent> <leader>l :Limelight!!<CR>
 vmap <silent> <leader>l :Limelight!!<CR>
 
+"" Refresh all buffers. Used after git rebasing and such
+set autoread
+" Mnemonic for git refresh
+nmap <leader>gr :checktime<CR>
+
 "" Run tests in a tmux split
 command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
