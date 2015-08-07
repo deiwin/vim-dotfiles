@@ -106,6 +106,10 @@ NeoBundle 'Valloric/YouCompleteMe', {
      \ }
 let g:neobundle#install_process_timeout = 1500
 NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 
 "" Go Lang Bundle
