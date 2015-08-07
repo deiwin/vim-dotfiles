@@ -589,3 +589,9 @@ if filereadable(expand("~/.nvimrc.local"))
   source ~/.nvimrc.local
 endif
 
+"" Run tests in a tmux split
+command! -nargs=1 Silent
+      \ | execute ':silent !'.<q-args>
+      \ | execute ':redraw!'
+nnoremap <leader>r :Silent run_tests_tmux %<CR>
+
