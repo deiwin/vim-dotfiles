@@ -91,7 +91,6 @@ let g:vim_bootstrap_langs = "javascript,ruby,html,go"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 "" Custom bundles
-NeoBundle "xolox/vim-misc"
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'Valloric/YouCompleteMe', {
