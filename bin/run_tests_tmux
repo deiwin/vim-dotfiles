@@ -25,5 +25,5 @@ if (($number_of_panes < 2))
 then
   tmux split-window -d -p 25
 fi
-tmux send-keys -t bottom "$test_command"  C-m
+tmux send-keys -t bottom  C-m "$test_command" C-m
 
