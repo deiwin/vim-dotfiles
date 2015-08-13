@@ -171,8 +171,8 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-"" Map leader to ,
-let mapleader=','
+"" Map leader to space
+let mapleader="\<space>"
 
 "" Enable hidden buffers
 set hidden
