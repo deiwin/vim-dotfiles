@@ -395,7 +395,8 @@ set splitright
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
+" Make the default commit binding be verbose
+noremap <Leader>gc :Gcommit -v<CR>
 noremap <Leader>gsh :Gpush<CR>
 noremap <Leader>gll :Gpull<CR>
 noremap <Leader>gs :Gstatus<CR>
