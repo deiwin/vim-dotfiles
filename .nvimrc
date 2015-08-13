@@ -604,5 +604,5 @@ nmap <leader>gr :checktime<CR>
 command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
       \ | execute ':redraw!'
-nnoremap <leader>r :Silent run_tests_tmux %<CR>
+nnoremap <leader>r :Silent run_tests_tmux %:p<CR>
 

@@ -12,6 +12,9 @@ extension="${file##*.}"
 if [ "$extension" == "rb" ]
 then
   test_command="rspec $file"
+elif [ "$extension" == "go" ]
+then
+  test_command="sh -c 'cd $(dirname $file) && go test'"
 else
   echo "Unknown file type"
   exit 1
