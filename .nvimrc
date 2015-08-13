@@ -404,6 +404,10 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
+" Remap hunk staging etc to not clash with split navigation's <leader>h
+nmap <leader>cs <Plug>GitGutterStageHunk
+nmap <leader>cp <Plug>GitGutterPreviewHunk
+nmap <leader>cr <Plug>GitGutterRevertHunk
 
 " session management
 nnoremap <leader>so :OpenSession
@@ -479,10 +483,12 @@ if has('macunix')
 endif
 
 "" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
+noremap <leader>p :bp<CR>
+noremap <leader>n :bn<CR>
+"" Close buffer
+" Open a previously edited buffer and then close the buffer we just moved away
+" from. This avoids closing the split due to closing the buffer.
+noremap <leader>q :b#\|bd #<CR>
 
 "" Split nav
 " a fix for <C-h> in iterm
@@ -498,11 +504,6 @@ noremap <leader>wr <C-w>r
 "nnoremap <C-S-k> :wincmd K<cr>
 "nnoremap <C-S-l> :wincmd L<cr>
 "nnoremap <C-S-j> :wincmd J<cr>
-
-"" Close buffer
-" Open a previously edited buffer and then close the buffer we just moved away
-" from. This avoids closing the split due to closing the buffer.
-noremap <leader>c :b#\|bd #<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
