@@ -486,10 +486,10 @@ noremap <leader>w :bn<CR>
 if has('nvim')
   nmap <BS> <C-w>h
 endif
-noremap <C-h>      <C-w>h
-noremap <C-j>      <C-w>j
-noremap <C-k>      <C-w>k
-noremap <C-l>      <C-w>l
+noremap <leader>h  <C-w>h
+noremap <leader>j  <C-w>j
+noremap <leader>k  <C-w>k
+noremap <leader>l  <C-w>l
 noremap <leader>wr <C-w>r
 "nnoremap <C-S-h> :wincmd H<cr>
 "nnoremap <C-S-k> :wincmd K<cr>
@@ -592,8 +592,10 @@ if filereadable(expand("~/.nvimrc.local"))
 endif
 
 "" Limelight
-nmap <silent> <leader>l :Limelight!!<CR>
-vmap <silent> <leader>l :Limelight!!<CR>
+nmap <silent> <leader>m :Limelight!!<CR>
+vmap <silent> <leader>m :Limelight!!<CR>
+" Not currently a feature :/
+"let g:limelight_buffer_local = 1
 
 "" Refresh all buffers. Used after git rebasing and such
 set autoread
