@@ -386,8 +386,12 @@ set autoread
 "" Mappings
 "*****************************************************************************
 "" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+noremap <Leader>o :<C-u>split<CR>
+noremap <Leader>i :<C-u>vsplit<CR>
+
+"make splits open below and to the right
+set splitbelow
+set splitright
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>
