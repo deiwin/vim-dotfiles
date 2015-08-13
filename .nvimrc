@@ -109,6 +109,7 @@ NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
+NeoBundle 'ZoomWin'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
@@ -609,4 +610,7 @@ command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
       \ | execute ':redraw!'
 nnoremap <leader>r :Silent run_tests_tmux %:p<CR>
+
+"" ZoomWin
+nmap <leader>u :ZoomWin<CR>
 
