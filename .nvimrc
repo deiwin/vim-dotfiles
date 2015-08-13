@@ -110,6 +110,7 @@ NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
 NeoBundle 'ZoomWin'
+NeoBundle 'karlbright/qfdo.vim'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
