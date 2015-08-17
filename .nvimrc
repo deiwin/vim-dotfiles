@@ -111,6 +111,7 @@ NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
 NeoBundle 'ZoomWin'
 NeoBundle 'karlbright/qfdo.vim'
+NeoBundle 'junegunn/vim-easy-align'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
@@ -615,4 +616,10 @@ nnoremap <leader>r :Silent run_tests_tmux %:p<CR>
 
 "" ZoomWin
 nmap <leader>u :ZoomWin<CR>
+
+"" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+vmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
