@@ -109,9 +109,10 @@ NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
-NeoBundle 'ZoomWin'
 NeoBundle 'karlbright/qfdo.vim'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'janko-m/vim-test'
+NeoBundle 'benmills/vimux'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
@@ -599,14 +600,26 @@ set autoread
 " Mnemonic for git refresh
 nmap <leader>gr :checktime<CR>
 
-"" Run tests in a tmux split
-command! -nargs=1 Silent
-      \ | execute ':silent !'.<q-args>
-      \ | execute ':redraw!'
-nnoremap <leader>r :Silent run_tests_tmux %:p<CR>
+"" Run tests in a neovim or tmux split
+nmap <silent> <leader>r :TestNearest<CR>
+nmap <silent> <leader>R :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
+if has('nvim')
+  function! NeovimSplit(cmd)
+	:w
+	:split
+	:enew
+	:call termopen([&sh, &shcf, a:cmd])
+	:startinsert
+  endfunction
 
-"" ZoomWin
-nmap <leader>u :ZoomWin<CR>
+  let g:test#custom_strategies = {'neovim_split': function('NeovimSplit')}
+  let g:test#strategy = 'neovim_split'
+else
+  let g:test#strategy = 'vimux'
+endif
 
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
