@@ -617,6 +617,8 @@ if has('nvim')
 
   let g:test#custom_strategies = {'neovim_split': function('NeovimSplit')}
   let g:test#strategy = 'neovim_split'
+  " Use <esc> to get to normal mode in the terminal split
+  tnoremap <esc> <C-\><C-n>
 else
   let g:test#strategy = 'vimux'
 endif
