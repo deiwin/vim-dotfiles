@@ -124,7 +124,6 @@ autocmd CompleteDone * pclose
 "" Javascript Bundle
 NeoBundle "scrooloose/syntastic"
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'lukaszkorecki/CoffeeTags'
 
 
 "" Ruby Bundle
@@ -330,12 +329,6 @@ if g:vim_bootstrap_editor == 'nvim'
 else
   nnoremap <silent> <leader>sh :VimShellCreate<CR>
 endif
-
-"" CoffeTags conf
-"let g:CoffeeAutoTagDisabled=<0 or 1>     " Disables autotaging on save (Default: 0 [false])
-let g:CoffeeAutoTagFile="~/.coffeetags"       " Name of the generated tag file (Default: ./tags)
-let g:CoffeeAutoTagIncludeVars=0  " Includes variables (Default: 0 [false])
-"let g:CoffeeAutoTagTagRelative=<0 or 1>  " Sets file names to the relative path from the tag file location to the tag file location (Default: 1 [true])
 
 "*****************************************************************************
 "" Functions
