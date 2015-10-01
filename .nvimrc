@@ -448,9 +448,9 @@ let g:miniBufExplSplitBelow=0
 " End Ag
 
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-m>"
-let g:UltiSnipsJumpForwardTrigger = "<C-m>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
+let g:UltiSnipsExpandTrigger = "<C-e>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 let g:UltiSnipsEditSplit="vertical"
 
 " syntastic
