@@ -75,8 +75,6 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
 "" Snippets
-" supertab to make ultisnips and YouCompleteMe play together nicely
-NeoBundle 'ervandew/supertab'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
@@ -449,15 +447,10 @@ nnoremap <C-f> :Ag!<SPACE>
 let g:miniBufExplSplitBelow=0
 " End Ag
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger = "<C-m>"
+let g:UltiSnipsJumpForwardTrigger = "<C-m>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " syntastic
