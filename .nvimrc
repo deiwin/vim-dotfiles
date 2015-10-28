@@ -386,6 +386,8 @@ set autoread
 "" Split
 noremap <Leader>o :<C-u>split<CR>
 noremap <Leader>i :<C-u>vsplit<CR>
+noremap <Leader>O :<C-u>botright split<CR>
+noremap <Leader>I :<C-u>botright vsplit<CR>
 
 "make splits open below and to the right
 set splitbelow
