@@ -79,8 +79,7 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
 "" Color
-NeoBundle 'tomasr/molokai'
-NeoBundle 'gosukiwi/vim-atom-dark'
+NeoBundle 'chriskempson/base16-vim'
 " Enable ansi escape seq colors
 NeoBundle 'vim-scripts/AnsiEsc.vim'
 
@@ -214,8 +213,8 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
-  colorscheme molokai
-  "colorscheme atom-dark
+  set background=dark
+  colorscheme base16-3024
 endif
 
 set mousemodel=popup

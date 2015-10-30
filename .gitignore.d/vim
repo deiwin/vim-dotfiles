@@ -1,8 +1,9 @@
 *
+!/.config
+!/.config/zshrc.d
+!/.config/zshrc.d/base16-3024.dark.sh
 !/.ctags
 !/.gitignore.d
 !/.gitignore.d/vim
 !/.nvimrc
 !/.vimrc
-!/bin
-!/bin/run_tests_tmux
