@@ -6,16 +6,16 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=~/.nvim/bundle/neobundle.vim/
+  set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 endif
 
-let neobundle_readme=expand('~/.nvim/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
 
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
-  silent !mkdir -p ~/.nvim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim/
+  silent !mkdir -p ~/.config/nvim/bundle
+  silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim/
   let g:not_finsh_neobundle = "yes"
 
   " Run shell script if exist on custom select language
@@ -31,7 +31,7 @@ if !filereadable(neobundle_readme)
 endif
 
 " Required:
-call neobundle#begin(expand('~/.nvim/bundle/'))
+call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -143,8 +143,8 @@ NeoBundle 'mattn/emmet-vim'
 
 
 "" Include user's extra bundle
-if filereadable(expand("~/.nvimrc.local.bundles"))
-  source ~/.nvimrc.local.bundles
+if filereadable(expand("~/.config/nvim/local.bundles"))
+  source ~/.config/nvim/local.bundles
 endif
 
 call neobundle#end()
@@ -199,7 +199,7 @@ set showcmd
 set shell=/bin/sh
 
 " session management
-let g:session_directory = "~/.nvim/session"
+let g:session_directory = "~/.config/nvim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
@@ -580,8 +580,8 @@ set formatoptions+=t
 
 
 "" Include user's local vim config
-if filereadable(expand("~/.nvimrc.local"))
-  source ~/.nvimrc.local
+if filereadable(expand("~/.config/nvim/init.local"))
+  source ~/.config/nvim/init.local
 endif
 
 "" Limelight
