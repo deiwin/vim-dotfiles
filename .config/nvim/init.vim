@@ -113,6 +113,7 @@ NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'janko-m/vim-test'
 NeoBundle 'benmills/vimux'
 NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'superbrothers/vim-vimperator'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
