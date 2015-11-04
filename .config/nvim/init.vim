@@ -124,7 +124,11 @@ autocmd CompleteDone * pclose
 
 "" Javascript Bundle
 NeoBundle "scrooloose/syntastic"
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'kchmck/vim-coffee-script', {
+    \ 'autoload' : {
+       \ 'filename_patterns' : [ "\.coffee$", "\.cjsx$" ]
+    \ }
+  \ }
 
 
 "" Ruby Bundle
