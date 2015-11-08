@@ -104,7 +104,6 @@ let g:neobundle#install_process_timeout = 1500
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
@@ -114,6 +113,18 @@ NeoBundle 'janko-m/vim-test'
 NeoBundle 'benmills/vimux'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'superbrothers/vim-vimperator'
+
+"" CamelCaseMotion requires bindings to be declared before it is required
+map ,w <Plug>CamelCaseMotion_w
+map ,b <Plug>CamelCaseMotion_b
+map ,e <Plug>CamelCaseMotion_e
+omap i,w <Plug>CamelCaseMotion_iw
+xmap i,w <Plug>CamelCaseMotion_iw
+omap i,b <Plug>CamelCaseMotion_ib
+xmap i,b <Plug>CamelCaseMotion_ib
+omap i,e <Plug>CamelCaseMotion_ie
+xmap i,e <Plug>CamelCaseMotion_ie
+NeoBundle 'bkad/CamelCaseMotion'
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
