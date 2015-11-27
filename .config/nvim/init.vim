@@ -104,7 +104,7 @@ let g:neobundle#install_process_timeout = 1500
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/argtextobj.vim'
+NeoBundle 'wellle/targets.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
 NeoBundle 'karlbright/qfdo.vim'
