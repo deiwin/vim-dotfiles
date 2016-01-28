@@ -1,9 +1,11 @@
 *
 !/.config
+!/.config/nvim
+!/.config/nvim/init.vim
 !/.config/zshrc.d
 !/.config/zshrc.d/base16-3024.dark.sh
 !/.ctags
 !/.gitignore.d
 !/.gitignore.d/vim
-!/.nvimrc
+!/.vim
 !/.vimrc
