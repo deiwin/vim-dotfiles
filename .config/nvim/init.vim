@@ -640,3 +640,7 @@ vmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" Highlight 121st column if text flows over it
+highlight ColorColumn ctermbg=red guibg=#ed2939
+call matchadd('ColorColumn', '\%121v', 100)
+
