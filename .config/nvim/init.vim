@@ -376,6 +376,11 @@ augroup vimrc-js
   autocmd FileType html setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
+augroup git-commit
+  autocmd!
+  au FileType gitcommit setlocal spell spelllang=en_us
+augroup END
+
 set autoread
 
 "*****************************************************************************
