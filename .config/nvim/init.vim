@@ -443,11 +443,12 @@ if executable('ag')
 	let g:ctrlp_use_caching = 0
 endif
 
-nnoremap <C-f> :Ag!<SPACE>
-nnoremap <leader>f :Ag! <C-R><C-W>
+nnoremap <C-f> :LAg!<SPACE>
+nnoremap <leader>f :LAg! <C-R><C-W>
 " yank the current visual selection and insert it as the search term
-vnoremap <leader>f y:<C-u>Ag! "<C-r>0"<space>
+vnoremap <leader>f y:<C-u>LAg! "<C-r>0"<space>
 
+let g:ag_lhandler="lopen"
 let g:ag_highlight=1
 let g:miniBufExplSplitBelow=0
 " End Ag
