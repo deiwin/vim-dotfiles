@@ -330,11 +330,6 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" Ag
-nnoremap <leader>f :Ag! <C-R><C-W>
-" yank the current visual selection and insert it as the search term
-vnoremap <leader>f y:<C-u>Ag! "<C-r>0"<space>
-
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
@@ -448,8 +443,12 @@ if executable('ag')
 	let g:ctrlp_use_caching = 0
 endif
 
-let g:ag_highlight=1
 nnoremap <C-f> :Ag!<SPACE>
+nnoremap <leader>f :Ag! <C-R><C-W>
+" yank the current visual selection and insert it as the search term
+vnoremap <leader>f y:<C-u>Ag! "<C-r>0"<space>
+
+let g:ag_highlight=1
 let g:miniBufExplSplitBelow=0
 " End Ag
 
