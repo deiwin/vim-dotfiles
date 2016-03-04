@@ -634,7 +634,7 @@ call matchadd('ColorColumn', '\%121v', 100)
 
 augroup vim-prose
   autocmd!
-  au BufNewFile,BufRead *.md,*.txt,*.prose setlocal filetype=prose
+  au BufNewFile,BufRead *.md,*.txt,*.prose,*.tmp setlocal filetype=prose
   au FileType prose set textwidth=79
   au FileType prose setlocal formatoptions=aw2tq
   au FileType prose setlocal nonumber
