@@ -41,7 +41,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'justinmk/vim-dirvish'
-map <silent> - :Dirvish<CR>
+map <silent> - :Dirvish %<CR>
 
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
