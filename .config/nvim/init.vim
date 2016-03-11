@@ -65,10 +65,6 @@ endif
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
-"" Snippets
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-
 "" Color
 NeoBundle 'chriskempson/base16-vim'
 " Enable ansi escape seq colors
@@ -422,12 +418,6 @@ let g:ag_lhandler="lopen"
 let g:ag_highlight=1
 let g:miniBufExplSplitBelow=0
 " End Ag
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-e>"
-let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
-let g:UltiSnipsEditSplit="vertical"
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
