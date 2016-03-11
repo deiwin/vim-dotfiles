@@ -117,7 +117,14 @@ NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'superbrothers/vim-vimperator'
 
 NeoBundle 'chaoren/vim-wordmotion'
-let g:wordmotion_prefix = ","
+let g:wordmotion_mappings = {
+	\ 'w' : ',w',
+	\ 'e' : ',e',
+	\ 'b' : ',b',
+	\ 'ge' : ',ge',
+	\ 'iw' : 'i,w',
+	\ 'aw' : 'a,w'
+  \ }
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
