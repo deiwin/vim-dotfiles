@@ -101,12 +101,17 @@ let g:wordmotion_mappings = {
 	\ 'aw' : 'a,w'
   \ }
 
+NeoBundle 'benekastah/neomake'
+augroup neomake-autosave
+  autocmd!
+  au BufWritePost * Neomake
+augroup END
+
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
 
 
 "" Javascript Bundle
-NeoBundle "scrooloose/syntastic"
 NeoBundle 'kchmck/vim-coffee-script', {
     \ 'autoload' : {
        \ 'filename_patterns' : [ "\.coffee$", "\.cjsx$" ]
@@ -258,7 +263,6 @@ endif
 
 " vim-airline
 let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -410,17 +414,6 @@ let g:ag_lhandler="lopen"
 let g:ag_highlight=1
 let g:miniBufExplSplitBelow=0
 " End Ag
-
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol='✗'
-let g:syntastic_style_warning_symbol='⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
-
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
