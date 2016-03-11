@@ -42,7 +42,8 @@ map <silent> - :call OpenDirvish()<CR>
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 " Trade accuracy for speed
 let g:gitgutter_eager = 0
@@ -247,9 +248,10 @@ if exists("*gutentags#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'base16_3024'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
