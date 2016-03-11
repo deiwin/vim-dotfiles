@@ -47,21 +47,8 @@ NeoBundle 'airblade/vim-gitgutter'
 " Trade accuracy for speed
 let g:gitgutter_eager = 0
 NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-if v:version > 702
-	NeoBundle 'Shougo/vimshell.vim'
-endif
 
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
@@ -126,8 +113,6 @@ NeoBundle "vim-ruby/vim-ruby"
 NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'mattn/emmet-vim'
-
 
 
 "" Include user's extra bundle
@@ -300,10 +285,6 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
 
 "*****************************************************************************
 "" Autocmd Rules
