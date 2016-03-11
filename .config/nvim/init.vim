@@ -17,17 +17,6 @@ if !filereadable(neobundle_readme)
   silent !mkdir -p ~/.config/nvim/bundle
   silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim/
   let g:not_finsh_neobundle = "yes"
-
-  " Run shell script if exist on custom select language
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/go/go.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/javascript/javascript.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/ruby/ruby.sh | bash -s stable
-
-  silent !\curl -sSL https://raw.githubusercontent.com/avelino/vim-bootstrap/master/vim_template/langs/html/html.sh | bash -s stable
-
 endif
 
 " Required:
@@ -84,12 +73,6 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'chriskempson/base16-vim'
 " Enable ansi escape seq colors
 NeoBundle 'vim-scripts/AnsiEsc.vim'
-
-"" Vim-Bootstrap Updater
-NeoBundle 'sherzberg/vim-bootstrap-updater'
-
-let g:vim_bootstrap_langs = "javascript,ruby,html,go"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 "" Custom bundles
 NeoBundle 'ludovicchabant/vim-gutentags'
@@ -329,13 +312,6 @@ cnoreabbrev Qall qall
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
-
-" terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
 
 "*****************************************************************************
 "" Autocmd Rules
