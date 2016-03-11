@@ -378,8 +378,6 @@ augroup git-commit
   au FileType gitcommit setlocal spell spelllang=en_us
 augroup END
 
-set autoread
-
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
