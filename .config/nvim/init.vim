@@ -119,11 +119,7 @@ NeoBundle 'kchmck/vim-coffee-script', {
 
 
 "" Ruby Bundle
-NeoBundle "tpope/vim-rails"
-NeoBundle "tpope/vim-rake"
-NeoBundle "tpope/vim-projectionist"
-NeoBundle "thoughtbot/vim-rspec"
-
+NeoBundle "vim-ruby/vim-ruby"
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
