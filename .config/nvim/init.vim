@@ -116,17 +116,8 @@ NeoBundle 'benmills/vimux'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'superbrothers/vim-vimperator'
 
-"" CamelCaseMotion requires bindings to be declared before it is required
-map ,w <Plug>CamelCaseMotion_w
-map ,b <Plug>CamelCaseMotion_b
-map ,e <Plug>CamelCaseMotion_e
-omap i,w <Plug>CamelCaseMotion_iw
-xmap i,w <Plug>CamelCaseMotion_iw
-omap i,b <Plug>CamelCaseMotion_ib
-xmap i,b <Plug>CamelCaseMotion_ib
-omap i,e <Plug>CamelCaseMotion_ie
-xmap i,e <Plug>CamelCaseMotion_ie
-NeoBundle 'bkad/CamelCaseMotion'
+NeoBundle 'chaoren/vim-wordmotion'
+let g:wordmotion_prefix = ","
 
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
