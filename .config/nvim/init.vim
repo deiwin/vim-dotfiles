@@ -129,8 +129,6 @@ let g:wordmotion_mappings = {
 "" Go Lang Bundle
 NeoBundle "majutsushi/tagbar"
 NeoBundle "fatih/vim-go"
-" Fix vim-go leaving scratch buffers open
-autocmd CompleteDone * pclose
 
 
 "" Javascript Bundle
@@ -575,6 +573,8 @@ let g:tagbar_type_ruby = {
 
 augroup vimrc-go
   autocmd!
+  " Fix vim-go leaving scratch buffers open
+  au CompleteDone * pclose
   "" vim-go bindings
   au FileType go nmap <Leader>gd <Plug>(go-doc)
   au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
