@@ -670,3 +670,10 @@ augroup vim-prose
   au FileType prose highlight GitGutterChangeDelete ctermbg=bg guibg=bg
 augroup END
 
+"" Autosave
+augroup autosave
+  autocmd!
+  au FocusLost * silent! wa
+augroup END
+set autowriteall
+
