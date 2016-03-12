@@ -30,14 +30,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'justinmk/vim-dirvish'
-function! OpenDirvish()
-  if bufname('%') == ''
-	:Dirvish
-  else
-	:Dirvish %
-  endif
-endfunction
-map <silent> - :call OpenDirvish()<CR>
 
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
@@ -45,8 +37,6 @@ NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
-" Trade accuracy for speed
-let g:gitgutter_eager = 0
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
@@ -64,8 +54,6 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'Shougo/deoplete.nvim'
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <Tab> pumvisible()? "\<C-n>" : deoplete#mappings#manual_complete()
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
@@ -80,20 +68,8 @@ NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'superbrothers/vim-vimperator'
 
 NeoBundle 'chaoren/vim-wordmotion'
-let g:wordmotion_mappings = {
-	\ 'w' : ',w',
-	\ 'e' : ',e',
-	\ 'b' : ',b',
-	\ 'ge' : ',ge',
-	\ 'iw' : 'i,w',
-	\ 'aw' : 'a,w'
-  \ }
 
 NeoBundle 'benekastah/neomake'
-augroup neomake-autosave
-  autocmd!
-  au BufWritePost * Neomake
-augroup END
 
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
@@ -129,6 +105,39 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+" Trade gitgutter accuracy for speed
+let g:gitgutter_eager = 0
+
+" Set up binding for dirvish
+function! OpenDirvish()
+  if bufname('%') == ''
+	:Dirvish
+  else
+	:Dirvish %
+  endif
+endfunction
+map <silent> - :call OpenDirvish()<CR>
+
+" Set up deoplete + binding for it
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <Tab> pumvisible()? "\<C-n>" : deoplete#mappings#manual_complete()
+
+" Set up bindings for sub-word motions
+let g:wordmotion_mappings = {
+	\ 'w' : ',w',
+	\ 'e' : ',e',
+	\ 'b' : ',b',
+	\ 'ge' : ',ge',
+	\ 'iw' : 'i,w',
+	\ 'aw' : 'a,w'
+  \ }
+
+" Configure neomake to run on every save
+augroup neomake-autosave
+  autocmd!
+  au BufWritePost * Neomake
+augroup END
 
 "*****************************************************************************
 "" Basic Setup
@@ -365,7 +374,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 "" ctrlp.vim
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,*/spec/reports/*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 0
