@@ -124,14 +124,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <silent><expr> <Tab> pumvisible()? "\<C-n>" : deoplete#mappings#manual_complete()
 
 " Set up bindings for sub-word motions
-let g:wordmotion_mappings = {
-	\ 'w' : ',w',
-	\ 'e' : ',e',
-	\ 'b' : ',b',
-	\ 'ge' : ',ge',
-	\ 'iw' : 'i,w',
-	\ 'aw' : 'a,w'
-  \ }
+let g:wordmotion_prefix = ','
 
 " Configure neomake to run on every save
 augroup neomake-autosave
