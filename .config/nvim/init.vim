@@ -38,6 +38,7 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 
