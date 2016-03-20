@@ -107,9 +107,6 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" Trade gitgutter accuracy for speed
-let g:gitgutter_eager = 0
-
 " Set up binding for dirvish
 function! OpenDirvish()
   if bufname('%') == ''
