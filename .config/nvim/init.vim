@@ -119,7 +119,6 @@ map <silent> - :call OpenDirvish()<CR>
 
 " Set up deoplete + binding for it
 let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <Tab> pumvisible()? "\<C-n>" : deoplete#mappings#manual_complete()
 
 " Set up bindings for sub-word motions
 let g:wordmotion_prefix = ','
