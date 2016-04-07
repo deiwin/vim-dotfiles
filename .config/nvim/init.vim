@@ -92,6 +92,8 @@ NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 
+"" Haskell Bundle
+NeoBundle 'eagletmt/neco-ghc'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
