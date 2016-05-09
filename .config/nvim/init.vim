@@ -30,6 +30,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "" NeoBundle install packages
 "*****************************************************************************
 NeoBundle 'justinmk/vim-dirvish'
+" For useful file/dir commands
+NeoBundle 'tpope/vim-eunuch'
 
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
