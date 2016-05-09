@@ -57,6 +57,10 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'chase/vim-ansible-yaml'
 NeoBundle 'Shougo/deoplete.nvim'
+let s:hooks = neobundle#get_hooks("deoplete.nvim")
+function! s:hooks.on_source(bundle)
+    let g:deoplete#enable_at_startup = 1
+endfunction
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
@@ -120,9 +124,6 @@ function! OpenDirvish()
   endif
 endfunction
 map <silent> - :call OpenDirvish()<CR>
-
-" Set up deoplete + binding for it
-let g:deoplete#enable_at_startup = 1
 
 " Set up bindings for sub-word motions
 let g:wordmotion_prefix = ','
