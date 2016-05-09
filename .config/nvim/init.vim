@@ -354,6 +354,7 @@ noremap <Leader>gr :Gremove<CR>
 nmap <leader>cs <Plug>GitGutterStageHunk
 nmap <leader>cp <Plug>GitGutterPreviewHunk
 nmap <leader>cr <Plug>GitGutterRevertHunk
+nmap <leader>cu <Plug>GitGutterUndoHunk
 
 " session management
 nnoremap <leader>so :OpenSession
