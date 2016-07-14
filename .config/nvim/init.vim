@@ -145,12 +145,6 @@ set fileencodings=utf-8
 "" Fix backspace indent
 set backspace=indent,eol,start
 
-"" Tabs. May be overriten by autocmd rules
-set tabstop=4
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-
 "" Map leader to space
 let mapleader="\<space>"
 
@@ -166,6 +160,12 @@ set smartcase
 "" Encoding
 set bomb
 set binary
+
+"" Tabs. May be overriten by autocmd rules
+set tabstop=4
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 
 "" Directories for swp files
