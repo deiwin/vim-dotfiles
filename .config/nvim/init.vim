@@ -327,6 +327,12 @@ augroup git-commit
   au FileType gitcommit setlocal spell spelllang=en_us
 augroup END
 
+"" Haskell
+augroup vimrc-haskell
+  autocmd!
+  autocmd FileType haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+augroup END
+
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
