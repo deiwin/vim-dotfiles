@@ -128,6 +128,7 @@ map <silent> - :call OpenDirvish()<CR>
 " Set up bindings for sub-word motions
 let g:wordmotion_prefix = ','
 
+let g:neomake_javascript_enabled_makers = ['eslint']
 " Configure neomake to run on every save
 augroup neomake-autosave
   autocmd!
