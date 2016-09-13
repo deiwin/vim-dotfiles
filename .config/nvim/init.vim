@@ -77,6 +77,7 @@ NeoBundle 'superbrothers/vim-vimperator'
 NeoBundle 'chaoren/vim-wordmotion'
 
 NeoBundle 'benekastah/neomake'
+NeoBundle 'benjie/neomake-local-eslint.vim'
 
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
