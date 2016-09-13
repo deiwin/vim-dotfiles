@@ -486,6 +486,12 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:gutentags_project_root = ['package.json', 'Brocfile.js', 'Capfile', 'Rakefile', 'bower.json', '.ruby-version', 'Gemfile']
+let g:gutentags_project_info = []
+call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
+call add(g:gutentags_project_info, {'type': 'javascript', 'file': 'package.json'})
+" Use -R because es-ctags doesn't support --options used by Gutentags to
+" specify the recursiveness
+let g:gutentags_ctags_executable_javascript = 'es-ctags -R'
 
 augroup vimrc-go
   autocmd!
