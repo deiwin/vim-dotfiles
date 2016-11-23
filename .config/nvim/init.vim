@@ -579,7 +579,7 @@ augroup vim-prose
   autocmd!
   au BufNewFile,BufRead *.md,*.txt,*.prose,*.tmp setlocal filetype=prose
   au FileType prose set textwidth=79
-  au FileType prose setlocal formatoptions=aw2tq
+  au FileType prose setlocal formatoptions=a2tq
   au FileType prose setlocal nonumber
   au FileType prose setlocal spell spelllang=en_us
   " Suggest spelling fixes
