@@ -321,6 +321,7 @@ augroup vimrc-js
   autocmd!
   autocmd FileType coffee setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType javascript setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
+  autocmd FileType javascript.jsx setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType html setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 
