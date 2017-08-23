@@ -55,7 +55,7 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 
 "" Custom bundles
 NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'chase/vim-ansible-yaml'
+NeoBundle 'pearofducks/ansible-vim'
 NeoBundle 'Shougo/deoplete.nvim'
 let s:hooks = neobundle#get_hooks("deoplete.nvim")
 function! s:hooks.on_source(bundle)
@@ -95,7 +95,7 @@ NeoBundle 'kchmck/vim-coffee-script', {
 NeoBundle "vim-ruby/vim-ruby"
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 
