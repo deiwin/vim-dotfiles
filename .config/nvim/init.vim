@@ -194,6 +194,8 @@ set number
 let no_buffers_menu=1
 set termguicolors
 if !exists('g:not_finsh_neobundle')
+  " set background=light
+  " colorscheme base16-paraiso
   set background=dark
   colorscheme base16-3024
 endif
