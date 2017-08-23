@@ -89,6 +89,7 @@ NeoBundle 'kchmck/vim-coffee-script', {
        \ 'filename_patterns' : [ "\.coffee$", "\.cjsx$" ]
     \ }
   \ }
+NeoBundle 'ternjs/tern_for_vim', { 'build': 'npm install' }
 
 
 "" Ruby Bundle
