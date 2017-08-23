@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+# This passes the last argument (the path) to Ag, while passing other flags and
+# options to ctags. This allows the command to leverage Ag's ability to ignore
+# files/folders specified in .gitignore and .agignore files.
+#
+# This command isn't perfect, however, because it doesn't currently support
+# listing multiple files/folders as ctags does. But it should be enough for
+# usage with vim-gutentags.
+
+ag -l '.*' "${@: -1}" | ctags "${@:1:$(($# - 1))}" -L-

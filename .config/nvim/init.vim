@@ -485,6 +485,7 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 " => Tags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:gutentags_ctags_executable = 'ctags-ignore'
 let g:gutentags_project_root = ['package.json', 'Brocfile.js', 'Capfile', 'Rakefile', 'bower.json', '.ruby-version', 'Gemfile']
 let g:gutentags_project_info = []
 call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
