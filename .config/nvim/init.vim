@@ -103,6 +103,10 @@ NeoBundle 'tpope/vim-haml'
 "" Haskell Bundle
 NeoBundle 'eagletmt/neco-ghc'
 
+"" Scheme and other Lisp-y things
+NeoBundle 'guns/vim-sexp'
+NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
+
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
   source ~/.config/nvim/local.bundles
