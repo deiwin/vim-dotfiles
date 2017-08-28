@@ -106,6 +106,7 @@ NeoBundle 'eagletmt/neco-ghc'
 "" Scheme and other Lisp-y things
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
+NeoBundle 'kien/rainbow_parentheses.vim'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
@@ -618,3 +619,11 @@ augroup autosave
 augroup END
 set autowriteall
 
+"" Scheme and other Lisp-y langs
+augroup vimrc-scheme
+  autocmd!
+  au FileType scheme RainbowParenthesesActivate
+  au FileType scheme RainbowParenthesesLoadRound
+  au FileType scheme RainbowParenthesesLoadSquare
+  au FileType scheme RainbowParenthesesLoadBraces
+augroup END
