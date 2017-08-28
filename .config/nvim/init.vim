@@ -107,6 +107,7 @@ NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'guns/vim-sexp'
 NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'jpalardy/vim-slime'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
@@ -620,10 +621,27 @@ augroup END
 set autowriteall
 
 "" Scheme and other Lisp-y langs
+function! OpenSchemeREPLOrReloadCurrentFile()
+  if !exists('g:slime_default_config')
+    split
+    enew
+    call termopen(['with-readline', 'racket', '-f', 'lib.scm', '-i'])
+    let g:slime_default_config = b:terminal_job_id
+    let g:slime_dont_ask_default = 1
+    " go to previous split
+    execute 'normal!' . "\<c-w>p"
+  endif
+  call jobsend(g:slime_default_config, '(load "'.expand('%')."\")\<cr>")
+endfunction
+
 augroup vimrc-scheme
   autocmd!
   au FileType scheme RainbowParenthesesActivate
   au FileType scheme RainbowParenthesesLoadRound
   au FileType scheme RainbowParenthesesLoadSquare
   au FileType scheme RainbowParenthesesLoadBraces
+  au FileType scheme nmap <leader>r :call OpenSchemeREPLOrReloadCurrentFile()<CR>
 augroup END
+
+let g:slime_target = "neovim"
+let g:slime_paste_file = tempname()
