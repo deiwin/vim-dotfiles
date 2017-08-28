@@ -645,3 +645,5 @@ augroup END
 
 let g:slime_target = "neovim"
 let g:slime_paste_file = tempname()
+" Remap from default <leader>rwp to avoid having to wait after using <leader>r
+nmap <leader>wpr <Plug>RestoreWinPosn
