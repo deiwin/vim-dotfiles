@@ -515,6 +515,8 @@ augroup vimrc-go
   au FileType go nmap <Leader>ge <Plug>(go-rename)
 
   au FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+  au FileType go let g:deoplete#disable_auto_complete = 1
 augroup END
 
 
