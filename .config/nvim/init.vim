@@ -628,7 +628,7 @@ function! OpenSchemeREPLOrReloadCurrentFile()
   if !exists('g:slime_default_config')
     split
     enew
-    call termopen(['with-readline', 'racket', '-f', 'lib.scm', '-i'])
+    call termopen(['with-readline', 'racket', '-i'])
     let g:slime_default_config = b:terminal_job_id
     let g:slime_dont_ask_default = 1
     " go to previous split
