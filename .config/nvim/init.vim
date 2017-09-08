@@ -341,7 +341,7 @@ augroup END
 
 augroup git-commit
   autocmd!
-  au FileType gitcommit setlocal spell spelllang=en_us
+  au FileType gitcommit setlocal spell
 augroup END
 
 "" Haskell
@@ -596,10 +596,12 @@ call matchadd('ColorColumn', '\%121v', 100)
 
 augroup vim-markdown
   autocmd!
-  au FileType markdown setlocal spell spelllang=en_us
+  au FileType markdown setlocal spell
   " Suggest spelling fixes
   au FileType markdown nnoremap <localleader>s ea<C-X><C-S>
 augroup END
+set spelllang=en_us
+set spellfile=~/.config/nvim/spell/mydict.utf-8.add
 
 "" Autosave
 augroup autosave

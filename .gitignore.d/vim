@@ -2,6 +2,8 @@
 !/.config
 !/.config/nvim
 !/.config/nvim/init.vim
+!/.config/nvim/spell
+!/.config/nvim/spell/mydict.utf-8.add
 !/.config/zshrc.d
 !/.config/zshrc.d/base16-3024.dark.sh
 !/.ctags
