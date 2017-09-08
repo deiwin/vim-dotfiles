@@ -7,7 +7,10 @@
 !/.config/zshrc.d
 !/.config/zshrc.d/base16-3024.dark.sh
 !/.ctags
+!/.eslintrc.js
 !/.gitignore.d
 !/.gitignore.d/vim
 !/.vim
 !/.vimrc
+!/bin
+!/bin/ctags-ignore
