@@ -109,6 +109,10 @@ NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'jpalardy/vim-slime'
 
+"" Prose editing
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
+
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
   source ~/.config/nvim/local.bundles
@@ -590,30 +594,11 @@ nmap ga <Plug>(EasyAlign)
 highlight ColorColumn ctermbg=red guibg=#ed2939
 call matchadd('ColorColumn', '\%121v', 100)
 
-augroup vim-prose
+augroup vim-markdown
   autocmd!
-  au BufNewFile,BufRead *.md,*.txt,*.prose,*.tmp setlocal filetype=prose
-  au BufNewFile,BufRead *.md setlocal syntax=markdown
-  au FileType prose set textwidth=79
-  au FileType prose setlocal formatoptions=a2tq
-  au FileType prose setlocal nonumber
-  au FileType prose setlocal spell spelllang=en_us
+  au FileType markdown setlocal spell spelllang=en_us
   " Suggest spelling fixes
-  au FileType prose nnoremap \s ea<C-X><C-S>
-
-  " Create left margin and un-higlight it
-  au FileType prose setlocal foldcolumn=12
-  au FileType prose highlight! link FoldColumn Normal
-
-  " Turn GitGutter to always have the column (to avoid the text jumping back
-  " and forth when the column is created/deleted) and change the background of
-  " the column to the normal (black background).
-  au FileType prose let g:gitgutter_sign_column_always=1
-  au FileType prose highlight! link SignColumn Normal
-  au FileType prose highlight GitGutterAdd ctermbg=bg guibg=bg
-  au FileType prose highlight GitGutterChange ctermbg=bg guibg=bg
-  au FileType prose highlight GitGutterDelete ctermbg=bg guibg=bg
-  au FileType prose highlight GitGutterChangeDelete ctermbg=bg guibg=bg
+  au FileType markdown nnoremap <localleader>s ea<C-X><C-S>
 augroup END
 
 "" Autosave
@@ -650,3 +635,6 @@ let g:slime_target = "neovim"
 let g:slime_paste_file = tempname()
 " Remap from default <leader>rwp to avoid having to wait after using <leader>r
 nmap <leader>wpr <Plug>RestoreWinPosn
+
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_frontmatter = 1
