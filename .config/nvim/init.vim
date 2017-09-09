@@ -112,6 +112,8 @@ NeoBundle 'jpalardy/vim-slime'
 "" Prose editing
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'reedes/vim-wordy'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
@@ -337,11 +339,6 @@ augroup vimrc-js
   autocmd FileType javascript setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType javascript.jsx setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType html setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-augroup END
-
-augroup git-commit
-  autocmd!
-  au FileType gitcommit setlocal spell
 augroup END
 
 "" Haskell
@@ -594,11 +591,19 @@ nmap ga <Plug>(EasyAlign)
 highlight ColorColumn ctermbg=red guibg=#ed2939
 call matchadd('ColorColumn', '\%121v', 100)
 
-augroup vim-markdown
-  autocmd!
-  au FileType markdown setlocal spell
+function! Prose()
+  call pencil#init()
+
+  setlocal spell
   " Suggest spelling fixes
-  au FileType markdown nnoremap <localleader>s ea<C-X><C-S>
+  nnoremap <localleader>s ea<C-X><C-S>
+endfunction
+" Allow calling it directly as well
+command! -nargs=0 Prose call Prose()
+
+augroup vim-text
+  autocmd!
+  au FileType markdown,gitcommit,text call Prose()
 augroup END
 set spelllang=en_us
 set spellfile=~/.config/nvim/spell/mydict.utf-8.add
