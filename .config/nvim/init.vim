@@ -480,7 +480,7 @@ noremap <leader>wr <C-w>r
 "nnoremap <C-S-j> :wincmd J<cr>
 
 "" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr> :syntax sync fromstart<cr>
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
