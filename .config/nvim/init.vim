@@ -135,9 +135,9 @@ NeoBundleCheck
 " Set up binding for dirvish
 function! OpenDirvish()
   if bufname('%') == ''
-	:Dirvish
+    :Dirvish
   else
-	:Dirvish %
+    :Dirvish %
   endif
 endfunction
 map <silent> - :call OpenDirvish()<CR>
@@ -279,7 +279,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 
 if !exists('g:airline_powerline_fonts')
@@ -450,18 +450,18 @@ function! DeleteInactiveBufs()
   "From tabpagebuflist() help, get a list of all buffers in all tabs
   let tablist = []
   for i in range(tabpagenr('$'))
-	call extend(tablist, tabpagebuflist(i + 1))
+    call extend(tablist, tabpagebuflist(i + 1))
   endfor
 
   "Below originally inspired by Hara Krishna Dara and Keith Roberts
   "http://tech.groups.yahoo.com/group/vim/message/56425
   let nWipeouts = 0
   for i in range(1, bufnr('$'))
-	if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
-	  "bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
-	  silent exec 'bwipeout' i
-	  let nWipeouts = nWipeouts + 1
-	endif
+    if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
+      "bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
+      silent exec 'bwipeout' i
+      let nWipeouts = nWipeouts + 1
+    endif
   endfor
   echomsg nWipeouts . ' buffer(s) wiped out'
 endfunction
@@ -565,11 +565,11 @@ nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 if has('nvim')
   function! NeovimSplit(cmd)
-	:w
-	:split
-	:enew
-	:call termopen([&sh, &shcf, a:cmd])
-	:startinsert
+    :w
+    :split
+    :enew
+    :call termopen([&sh, &shcf, a:cmd])
+    :startinsert
   endfunction
 
   let g:test#custom_strategies = {'neovim_split': function('NeovimSplit')}
