@@ -115,6 +115,9 @@ NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'reedes/vim-wordy'
 
+"" Elixir
+NeoBundle 'slashmili/alchemist.vim'
+
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
   source ~/.config/nvim/local.bundles
