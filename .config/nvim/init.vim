@@ -109,6 +109,12 @@ NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'jpalardy/vim-slime'
 
+"" Clojure
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'guns/vim-clojure-highlight'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-classpath'
+
 "" Prose editing
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
@@ -619,16 +625,19 @@ augroup END
 set autowriteall
 
 "" Scheme and other Lisp-y langs
-function! OpenSchemeREPLOrReloadCurrentFile()
+function! OpenSlimeCMDInSplit(cmd)
   if !exists('g:slime_default_config')
     split
     enew
-    call termopen(['with-readline', 'racket', '-i'])
+    call termopen(a:cmd)
     let g:slime_default_config = b:terminal_job_id
     let g:slime_dont_ask_default = 1
     " go to previous split
     execute 'normal!' . "\<c-w>p"
   endif
+endfunction
+function! OpenSchemeREPLOrReloadCurrentFile()
+  call OpenSlimeCMDInSplit(['with-readline', 'racket', '-i'])
   call jobsend(g:slime_default_config, '(load "'.expand('%')."\")\<cr>")
 endfunction
 
@@ -638,13 +647,28 @@ augroup vimrc-scheme
   au FileType scheme RainbowParenthesesLoadRound
   au FileType scheme RainbowParenthesesLoadSquare
   au FileType scheme RainbowParenthesesLoadBraces
-  au FileType scheme nmap <leader>r :call OpenSchemeREPLOrReloadCurrentFile()<CR>
+  au FileType scheme nmap <leader>z :call OpenSchemeREPLOrReloadCurrentFile()<CR>
 augroup END
 
 let g:slime_target = "neovim"
 let g:slime_paste_file = tempname()
+let g:slime_no_mappings = 1
+xmap <leader>x <Plug>SlimeRegionSend
+nmap <leader>x <Plug>SlimeParagraphSend
 " Remap from default <leader>rwp to avoid having to wait after using <leader>r
 nmap <leader>wpr <Plug>RestoreWinPosn
+
+function! OpenClojureREPL()
+  call OpenSlimeCMDInSplit(['lein', 'repl'])
+endfunction
+augroup vimrc-clojure
+  autocmd!
+  au FileType clojure RainbowParenthesesActivate
+  au Syntax clojure RainbowParenthesesLoadRound
+  au Syntax clojure RainbowParenthesesLoadSquare
+  au Syntax clojure RainbowParenthesesLoadBraces
+  au FileType clojure nmap <leader>z :call OpenClojureREPL()<CR>
+augroup END
 
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_frontmatter = 1
