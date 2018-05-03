@@ -106,6 +106,16 @@ NeoBundle 'tpope/vim-haml'
 
 "" Haskell Bundle
 NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'Shougo/vimproc.vim', {
+      \   'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \   }
+      \ }
+NeoBundle 'eagletmt/ghcmod-vim'
 
 "" Scheme and other Lisp-y things
 NeoBundle 'guns/vim-sexp'
@@ -374,6 +384,7 @@ augroup vimrc-haskell
   autocmd!
   autocmd FileType haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 augroup END
+let g:necoghc_enable_detailed_browse = 1
 
 "*****************************************************************************
 "" Mappings
