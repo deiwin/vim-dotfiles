@@ -80,6 +80,9 @@ NeoBundle 'chaoren/vim-wordmotion'
 NeoBundle 'benekastah/neomake'
 NeoBundle 'benjie/neomake-local-eslint.vim'
 
+NeoBundle 'LucHermitte/lh-vim-lib'
+NeoBundle 'LucHermitte/local_vimrc'
+
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
 
