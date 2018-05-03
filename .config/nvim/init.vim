@@ -128,6 +128,9 @@ NeoBundle 'reedes/vim-wordy'
 "" Elixir
 NeoBundle 'slashmili/alchemist.vim'
 
+"" Java
+NeoBundle 'artur-shaik/vim-javacomplete2'
+
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
   source ~/.config/nvim/local.bundles
@@ -688,3 +691,8 @@ augroup END
 
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_frontmatter = 1
+
+augroup vimrc-java
+  autocmd!
+  au FileType java setlocal omnifunc=javacomplete#Complete
+augroup END
