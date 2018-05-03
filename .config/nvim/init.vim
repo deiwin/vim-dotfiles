@@ -73,6 +73,7 @@ NeoBundle 'janko-m/vim-test'
 NeoBundle 'benmills/vimux'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'superbrothers/vim-vimperator'
+NeoBundle 'haya14busa/incsearch.vim'
 
 NeoBundle 'chaoren/vim-wordmotion'
 
@@ -176,10 +177,22 @@ let mapleader="\<space>"
 set hidden
 
 "" Searching
-set hlsearch
-set incsearch
 set ignorecase
 set smartcase
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 "" Encoding
 set bomb
