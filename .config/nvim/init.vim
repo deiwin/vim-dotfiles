@@ -422,7 +422,7 @@ augroup vimrc-haskell
   " au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
   " Managing targets
   " Prompts you to enter targets (no silent):
-  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
+  au FileType haskell nnoremap <leader>ust :InteroSetTargets<SPACE>
 augroup END
 
 let g:intero_start_immediately = 1
