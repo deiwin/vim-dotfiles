@@ -105,7 +105,6 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 
 "" Haskell Bundle
-NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'Shougo/vimproc.vim', {
       \   'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -116,6 +115,9 @@ NeoBundle 'Shougo/vimproc.vim', {
       \   }
       \ }
 NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'dag/vim2hs'
+NeoBundle 'vmchale/dhall-vim'
+NeoBundle 'parsonsmatt/intero-neovim'
 
 "" Scheme and other Lisp-y things
 NeoBundle 'guns/vim-sexp'
@@ -380,11 +382,53 @@ augroup vimrc-js
 augroup END
 
 "" Haskell
+" Add Stack binaries to path to use e.g. intero
+function! AddStackPath()
+  let stack_path = system("stack path --bin-path")
+  if v:shell_error
+    return 0
+  endif
+  let $PATH .= (":" . stack_path)
+endfunction
+
 augroup vimrc-haskell
   autocmd!
   autocmd FileType haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+  autocmd FileType haskell call AddStackPath()
+  autocmd FileType haskell setlocal formatprg=brittany
+
+  "" Intero
+  " Background process and window management
+  au FileType haskell nnoremap <silent> <leader>us :InteroStart<CR>
+  au FileType haskell nnoremap <silent> <leader>uk :InteroKill<CR>
+  " Open intero/GHCi split horizontally, vertically
+  au FileType haskell nnoremap <silent> <leader>uo :InteroOpen<CR>
+  au FileType haskell nnoremap <silent> <leader>ui :InteroOpen<CR><C-W>H
+  au FileType haskell nnoremap <silent> <leader>uh :InteroHide<CR>
+  " Reloading (pick one)
+  " Automatically reload on save
+  au BufWritePost *.hs InteroReload
+  " Manually save and reload
+  " au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
+  " Load individual modules
+  au FileType haskell nnoremap <silent> <leader>ul :InteroLoadCurrentModule<CR>
+  au FileType haskell nnoremap <silent> <leader>uf :InteroLoadCurrentFile<CR>
+  " Type-related information
+  " Heads up! These next two differ from the rest.
+  au FileType haskell map <silent> <leader>ut <Plug>InteroGenericType
+  au FileType haskell map <silent> <leader>uT <Plug>InteroType
+  au FileType haskell nnoremap <silent> <leader>ti :InteroTypeInsert<CR>
+  " Navigation - no need, tags are enough
+  " au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
+  " Managing targets
+  " Prompts you to enter targets (no silent):
+  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
 augroup END
-let g:necoghc_enable_detailed_browse = 1
+
+let g:intero_start_immediately = 1
+let g:intero_type_on_hover = 0
+let g:intero_window_size = 15
+let g:intero_vertical_split = 0
 
 "*****************************************************************************
 "" Mappings

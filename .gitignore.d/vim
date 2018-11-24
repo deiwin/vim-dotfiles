@@ -1,5 +1,7 @@
 *
 !/.config
+!/.config/brittany
+!/.config/brittany/config.yaml
 !/.config/nvim
 !/.config/nvim/init.vim
 !/.config/nvim/spell
@@ -14,3 +16,4 @@
 !/.vimrc
 !/bin
 !/bin/ctags-ignore
+!/bin/haskell-ctags
