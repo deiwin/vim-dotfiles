@@ -2,6 +2,8 @@
 !/.config
 !/.config/brittany
 !/.config/brittany/config.yaml
+!/.config/markdownlint
+!/.config/markdownlint/style.rb
 !/.config/nvim
 !/.config/nvim/init.vim
 !/.config/nvim/spell
@@ -12,6 +14,7 @@
 !/.eslintrc.js
 !/.gitignore.d
 !/.gitignore.d/vim
+!/.mdlrc
 !/.vim
 !/.vimrc
 !/bin
