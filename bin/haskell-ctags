@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+ag -l '.*' "${@: -1}" | exec stack exec -- fast-tags -o "$2" -L-
