@@ -9,4 +9,4 @@ set -e
 # listing multiple files/folders as ctags does. But it should be enough for
 # usage with vim-gutentags.
 
-ag -l '.*' "${@: -1}" | ctags "${@:1:$(($# - 1))}" -L-
+ag -l '.*' "${@: -1}" | exec ctags "${@:1:$(($# - 1))}" -L-
