@@ -388,7 +388,7 @@ function! AddStackPath()
   if v:shell_error
     return 0
   endif
-  let $PATH .= (":" . stack_path)
+  let $PATH = stack_path
 endfunction
 
 augroup vimrc-haskell
