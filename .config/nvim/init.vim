@@ -632,11 +632,13 @@ if has('nvim')
 else
   let g:test#strategy = 'vimux'
 endif
-" This is required within Elixir umbrella projects, but shouldn't be a problem
-" for others, so we'll apply to all. As an alternative could use and autocmd
-" to only apply in Elixir projects.
-let test#filename_modifier = ":p"
 
+augroup vimrc-elixir
+  autocmd!
+  " This is required within Elixir umbrella projects, but is problematic in
+  " e.g. Go.
+  au FileType elixir let test#filename_modifier = ":p"
+augroup END
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 vmap ga <Plug>(EasyAlign)
