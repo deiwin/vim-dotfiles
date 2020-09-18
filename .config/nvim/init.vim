@@ -423,10 +423,11 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 " Remap hunk staging etc to not clash with split navigation's <leader>h
-nmap <leader>cs <Plug>GitGutterStageHunk
-nmap <leader>cp <Plug>GitGutterPreviewHunk
-nmap <leader>cr <Plug>GitGutterRevertHunk
-nmap <leader>cu <Plug>GitGutterUndoHunk
+"GitGutterStageHunk
+nmap <leader>cs <Plug>(GitGutterStageHunk)
+nmap <leader>cp <Plug>(GitGutterPreviewHunk)
+nmap <leader>cr <Plug>(GitGutterRevertHunk)
+nmap <leader>cu <Plug>(GitGutterUndoHunk)
 
 " session management
 nnoremap <leader>so :OpenSession
