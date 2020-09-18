@@ -117,7 +117,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'vmchale/dhall-vim'
-NeoBundle 'parsonsmatt/intero-neovim'
+NeoBundle 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+"" TODO Also check out https://github.com/haskell/haskell-ide-engine#using-hie-with-vim-or-neovim
 
 "" Scheme and other Lisp-y things
 NeoBundle 'guns/vim-sexp'
@@ -396,39 +397,7 @@ augroup vimrc-haskell
   autocmd FileType haskell setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
   autocmd FileType haskell call AddStackPath()
   autocmd FileType haskell setlocal formatprg=brittany
-
-  "" Intero
-  " Background process and window management
-  au FileType haskell nnoremap <silent> <leader>us :InteroStart<CR>
-  au FileType haskell nnoremap <silent> <leader>uk :InteroKill<CR>
-  " Open intero/GHCi split horizontally, vertically
-  au FileType haskell nnoremap <silent> <leader>uo :InteroOpen<CR>
-  au FileType haskell nnoremap <silent> <leader>ui :InteroOpen<CR><C-W>H
-  au FileType haskell nnoremap <silent> <leader>uh :InteroHide<CR>
-  " Reloading (pick one)
-  " Automatically reload on save
-  au BufWritePost *.hs InteroReload
-  " Manually save and reload
-  " au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
-  " Load individual modules
-  au FileType haskell nnoremap <silent> <leader>ul :InteroLoadCurrentModule<CR>
-  au FileType haskell nnoremap <silent> <leader>uf :InteroLoadCurrentFile<CR>
-  " Type-related information
-  " Heads up! These next two differ from the rest.
-  au FileType haskell map <silent> <leader>ut <Plug>InteroGenericType
-  au FileType haskell map <silent> <leader>uT <Plug>InteroType
-  au FileType haskell nnoremap <silent> <leader>ti :InteroTypeInsert<CR>
-  " Navigation - no need, tags are enough
-  " au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
-  " Managing targets
-  " Prompts you to enter targets (no silent):
-  au FileType haskell nnoremap <leader>ust :InteroSetTargets<SPACE>
 augroup END
-
-let g:intero_start_immediately = 1
-let g:intero_type_on_hover = 0
-let g:intero_window_size = 15
-let g:intero_vertical_split = 0
 
 "*****************************************************************************
 "" Mappings
