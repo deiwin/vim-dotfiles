@@ -41,7 +41,7 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/CSApprox'
-NeoBundle 'rking/ag.vim'
+NeoBundle 'mileszs/ack.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 
 "" Vim-Session
@@ -462,13 +462,14 @@ else
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 endif
 
-nnoremap <C-f> :LAg!<SPACE>
-nnoremap <leader>f :LAg! <C-R><C-W>
+nnoremap <C-f> :LAck!<SPACE>
+nnoremap <leader>f :LAck! <C-R><C-W>
 " yank the current visual selection and insert it as the search term
-vnoremap <leader>f y:<C-u>LAg! "<C-r>0"<space>
+vnoremap <leader>f y:<C-u>LAck! "<C-r>0"<space>
 
-let g:ag_lhandler="lopen"
-let g:ag_highlight=1
+let g:ackprg = 'ag --vimgrep --smart-case'
+let g:ack_lhandler="lopen"
+let g:ackhighlight=1
 let g:miniBufExplSplitBelow=0
 " End Ag
 
