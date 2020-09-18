@@ -43,6 +43,7 @@ NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'vim-scripts/vis'
 
 "" Vim-Session
 NeoBundle 'xolox/vim-misc'
@@ -145,6 +146,10 @@ NeoBundle 'mhinz/vim-mix-format'
 
 "" Java
 NeoBundle 'artur-shaik/vim-javacomplete2'
+
+"" Swift & iOS
+NeoBundle 'keith/swift.vim'
+NeoBundle 'landaire/deoplete-swift'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
