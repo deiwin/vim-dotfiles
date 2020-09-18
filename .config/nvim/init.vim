@@ -139,7 +139,9 @@ NeoBundle 'reedes/vim-pencil'
 NeoBundle 'reedes/vim-wordy'
 
 "" Elixir
+NeoBundle 'elixir-editors/vim-elixir'
 NeoBundle 'slashmili/alchemist.vim'
+NeoBundle 'mhinz/vim-mix-format'
 
 "" Java
 NeoBundle 'artur-shaik/vim-javacomplete2'
@@ -639,6 +641,14 @@ augroup vimrc-elixir
   " e.g. Go.
   au FileType elixir let test#filename_modifier = ":p"
 augroup END
+let g:neomake_elixir_dialyzer_maker = {
+    \ 'exe': 'mix',
+    \ 'args': ['dialyzer'],
+    \ 'append_file': 0
+    \ }
+let g:neomake_elixir_enabled_makers = ['mix', 'credo', 'dialyzer']
+let g:mix_format_on_save = 1
+
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 vmap ga <Plug>(EasyAlign)
