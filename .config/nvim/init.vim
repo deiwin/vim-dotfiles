@@ -95,7 +95,10 @@ NeoBundle 'kchmck/vim-coffee-script', {
     \ }
   \ }
 NeoBundle 'ternjs/tern_for_vim', { 'build': 'npm install' }
-
+NeoBundle 'mhartington/nvim-typescript', { 'build': './install.sh'}
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'sbdchd/neoformat'
 
 "" Ruby Bundle
 NeoBundle "vim-ruby/vim-ruby"
@@ -387,7 +390,11 @@ augroup vimrc-js
   autocmd FileType javascript setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType javascript.jsx setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
   autocmd FileType html setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
+
+  autocmd BufWritePre *.js,*.ts undojoin | Neoformat
 augroup END
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_typescript = ['prettier']
 
 "" Haskell
 " Add Stack binaries to path to use e.g. intero
