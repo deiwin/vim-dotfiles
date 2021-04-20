@@ -465,15 +465,20 @@ let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_root_markers = ['start', 'package.json', 'mix.lock', 'Gemfile.lock']
 
-if executable('ag')
-  " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command_async = 1
+
+if executable('rg')
+  " https://github.com/BurntSushi/ripgrep
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ackprg = 'rg --vimgrep --smart-case'
+elseif executable('ag')
+  " https://github.com/ggreer/the_silver_searcher
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast, respects .gitignore
-  " and .agignore. Ignores hidden files by default.
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_user_command_async = 1
+  let g:ackprg = 'ag --vimgrep --smart-case'
 else
-  "ctrl+p ignore files in .gitignore
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 endif
 
@@ -482,7 +487,6 @@ nnoremap <leader>f :LAck! <C-R><C-W>
 " yank the current visual selection and insert it as the search term
 vnoremap <leader>f y:<C-u>LAck! "<C-r>0"<space>
 
-let g:ackprg = 'ag --vimgrep --smart-case'
 let g:ack_lhandler="lopen"
 let g:ackhighlight=1
 let g:miniBufExplSplitBelow=0
