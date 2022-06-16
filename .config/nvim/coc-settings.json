@@ -1,0 +1,99 @@
+{
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": [
+        "--lsp"
+      ],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": [
+        "haskell",
+        "lhaskell"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true,
+          "maxNumberOfProblems": 10,
+          "completionSnippetsOn": true
+        }
+      }
+    },
+    "dhall": {
+      "command": "stack",
+      "args": [
+        "exec",
+        "dhall-lsp-server"
+      ],
+      "filetypes": [
+        "dhall"
+      ]
+    },
+    "elm": {
+      "command": "elm-language-server",
+      "filetypes": [
+        "elm"
+      ],
+      "rootPatterns": [
+        "elm.json"
+      ],
+      "initializationOptions": {
+        "elmPath": "elm", // optional
+        "elmFormatPath": "elm-format", // optional
+        "elmTestPath": "elm-test", // optional
+        "elmAnalyseTrigger": "change" // optional
+      }
+    },
+    /* "text": { */
+    /*   "command": "unified-language-server", */
+    /*   "args": [ */
+    /*     "--parser=retext-english", */
+    /*     "--stdio" */
+    /*   ], */
+    /*   "filetypes": [ */
+    /*     "text" */
+    /*   ] */
+    /* }, */
+    "markdown": {
+      "command": "unified-language-server",
+      "args": [
+        "--parser=remark-parse",
+        "--stdio"
+      ],
+      "filetypes": [
+        "markdown"
+      ],
+      "trace.server": "verbose",
+      "settings": {
+        "unified-language-server": {
+          "remark-parse": {
+            "plugins": [
+              ["#remark-retext", "#parse-latin"],
+              ["#retext-spell", "#dictionary-en"]
+            ]
+          }
+        }
+      }
+    },
+    "purescript": {
+      "command": "purescript-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["purescript"],
+      "trace.server": "off",
+      "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"],
+      "settings": {
+        "purescript": {
+          "addSpagoSources": true,
+          "addNpmPath": true // Set to true if using a local purty install for formatting
+          // etc
+        }
+      }
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["purescript"]
+}
