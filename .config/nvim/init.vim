@@ -57,18 +57,19 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 "" Custom bundles
 NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'pearofducks/ansible-vim'
-NeoBundle 'Shougo/deoplete.nvim'
-let s:hooks = neobundle#get_hooks("deoplete.nvim")
-function! s:hooks.on_source(bundle)
-    let g:deoplete#enable_at_startup = 1
-endfunction
+" NeoBundle 'Shougo/deoplete.nvim'
+" let s:hooks = neobundle#get_hooks("deoplete.nvim")
+" function! s:hooks.on_source(bundle)
+"     let g:deoplete#enable_at_startup = 1
+" endfunction
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'wellle/targets.vim'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tmux-plugins/vim-tmux'
-NeoBundle 'karlbright/qfdo.vim'
+"" Broken on M1 currently for some reason
+"" NeoBundle 'karlbright/qfdo.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'janko-m/vim-test'
 NeoBundle 'benmills/vimux'
@@ -109,6 +110,17 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 
 "" Haskell Bundle
+" NeoBundle 'Shougo/vimproc.vim', {
+"       \   'build' : {
+"       \     'windows' : 'tools\\update-dll-mingw',
+"       \     'cygwin' : 'make -f make_cygwin.mak',
+"       \     'mac' : 'make -f make_mac.mak',
+"       \     'linux' : 'make',
+"       \     'unix' : 'gmake',
+"       \   }
+"       \ }
+" NeoBundle 'eagletmt/ghcmod-vim'
+" NeoBundle 'dag/vim2hs'
 NeoBundle 'neoclide/coc.nvim'
 NeoBundle 'vmchale/dhall-vim'
 NeoBundle 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
@@ -127,10 +139,10 @@ NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-classpath'
 
 "" Prose editing
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'reedes/vim-pencil'
-NeoBundle 'reedes/vim-wordy'
+" NeoBundle 'godlygeek/tabular'
+" NeoBundle 'plasticboy/vim-markdown'
+" NeoBundle 'reedes/vim-pencil'
+" NeoBundle 'reedes/vim-wordy'
 
 "" Elixir
 NeoBundle 'elixir-editors/vim-elixir'
@@ -142,7 +154,7 @@ NeoBundle 'artur-shaik/vim-javacomplete2'
 
 "" Swift & iOS
 NeoBundle 'keith/swift.vim'
-NeoBundle 'landaire/deoplete-swift'
+" NeoBundle 'landaire/deoplete-swift'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
@@ -399,6 +411,8 @@ endfunction
 augroup vimrc-haskell
   autocmd!
   autocmd FileType haskell setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  " autocmd FileType haskell call AddStackPath()
+  " autocmd FileType haskell setlocal formatprg=brittany
 augroup END
 
 "*****************************************************************************
@@ -415,6 +429,15 @@ set splitbelow
 set splitright
 
 "" Git
+" noremap <Leader>ga :Gwrite<CR>
+" " Make the default commit binding be verbose
+" noremap <Leader>gc :Git commit -v<CR>
+" noremap <Leader>gsh :Git push<CR>
+" noremap <Leader>gll :Git pull<CR>
+" noremap <Leader>gs :Git status<CR>
+" noremap <Leader>gb :Git blame<CR>
+" noremap <Leader>gd :Gvdiff<CR>
+" noremap <Leader>gr :Git remove<CR>
 " Remap hunk staging etc to not clash with split navigation's <leader>h
 "GitGutterStageHunk
 nmap <leader>cs <Plug>(GitGutterStageHunk)
@@ -423,6 +446,10 @@ nmap <leader>cr <Plug>(GitGutterRevertHunk)
 nmap <leader>cu <Plug>(GitGutterUndoHunk)
 
 " session management
+" nnoremap <leader>so :OpenSession
+" nnoremap <leader>ss :SaveSession
+" nnoremap <leader>sd :DeleteSession<CR>
+" nnoremap <leader>sc :CloseSession<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -566,7 +593,7 @@ augroup vimrc-go
 
   au FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-  au FileType go let g:deoplete#disable_auto_complete = 1
+  " au FileType go let g:deoplete#disable_auto_complete = 1
 augroup END
 
 
@@ -601,6 +628,7 @@ vmap <silent> <leader>m :Limelight!!<CR>
 "" Refresh all buffers. Used after git rebasing and such
 set autoread
 " Mnemonic for git refresh
+" nmap <leader>gr :checktime<CR>
 
 "" Run tests in a neovim or tmux split
 nmap <silent> <leader>r :TestNearest<CR>
@@ -649,20 +677,20 @@ nmap ga <Plug>(EasyAlign)
 highlight ColorColumn ctermbg=red guibg=#ed2939
 call matchadd('ColorColumn', '\%121v', 100)
 
-function! Prose()
-  call pencil#init()
+" function! Prose()
+"   call pencil#init()
 
-  setlocal spell
-  " Suggest spelling fixes
-  nnoremap <localleader>s ea<C-X><C-S>
-endfunction
+"   setlocal spell
+"   " Suggest spelling fixes
+"   nnoremap <localleader>s ea<C-X><C-S>
+" endfunction
 " Allow calling it directly as well
-command! -nargs=0 Prose call Prose()
+" command! -nargs=0 Prose call Prose()
 
-augroup vim-text
-  autocmd!
-  au FileType markdown,gitcommit,text call Prose()
-augroup END
+" augroup vim-text
+"   autocmd!
+"   au FileType markdown,gitcommit,text call Prose()
+" augroup END
 set spelllang=en_us
 set spellfile=~/.config/nvim/spell/mydict.utf-8.add
 
