@@ -125,6 +125,8 @@ NeoBundle 'neoclide/coc.nvim'
 NeoBundle 'vmchale/dhall-vim'
 NeoBundle 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 "" TODO Also check out https://github.com/haskell/haskell-ide-engine#using-hie-with-vim-or-neovim
+NeoBundle 'junegunn/fzf'
+NeoBundle 'monkoose/fzf-hoogle.vim'
 
 "" Scheme and other Lisp-y things
 NeoBundle 'guns/vim-sexp'
