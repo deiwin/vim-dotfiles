@@ -913,3 +913,41 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+function! GetVisualSelection()
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+
+vmap gpr :s/\%V.*\%V./\=system(['git', 'show', '-s', '--date=short', '--pretty=format:%h ("%s", %ad)', trim(GetVisualSelection())])/<CR>:noh<CR>
+nmap <expr> gpr GitPrettyRef()
+
+function GitPrettyRef(type = '') abort
+  if a:type == ''
+    set opfunc=GitPrettyRef
+    return 'g@'
+  endif
+
+  let sel_save = &selection
+  let reg_save = getreginfo('"')
+  let cb_save = &clipboard
+  let visual_marks_save = [getpos("'<"), getpos("'>")]
+
+  try
+    let commands = #{line: "'[V']", char: "`[v`]", block: "`[\<c-v>`]"}
+    silent exe 'noautocmd keepjumps normal ' .. get(commands, a:type, '') .. 'gpr'
+  finally
+    call setreg('"', reg_save)
+    call setpos("'<", visual_marks_save[0])
+    call setpos("'>", visual_marks_save[1])
+    let &clipboard = cb_save
+    let &selection = sel_save
+  endtry
+endfunction
