@@ -803,6 +803,8 @@ nnoremap <silent><nowait> gs  :<C-u>CocList -I symbols<cr>
 " " Resume latest coc list.
 " nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
 
+call lh#local_vimrc#munge('whitelist', $HOME.'/salemove')
+
 function! GetVisualSelection()
     let [line_start, column_start] = getpos("'<")[1:2]
     let [line_end, column_end] = getpos("'>")[1:2]
