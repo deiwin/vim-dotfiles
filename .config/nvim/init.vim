@@ -55,13 +55,7 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'vim-scripts/AnsiEsc.vim'
 
 "" Custom bundles
-NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'pearofducks/ansible-vim'
-" NeoBundle 'Shougo/deoplete.nvim'
-" let s:hooks = neobundle#get_hooks("deoplete.nvim")
-" function! s:hooks.on_source(bundle)
-"     let g:deoplete#enable_at_startup = 1
-" endfunction
 NeoBundle 'junegunn/limelight.vim'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
@@ -79,30 +73,13 @@ NeoBundle 'haya14busa/incsearch.vim'
 
 NeoBundle 'chaoren/vim-wordmotion'
 
-NeoBundle 'benekastah/neomake'
-NeoBundle 'benjie/neomake-local-eslint.vim'
-
 NeoBundle 'LucHermitte/lh-vim-lib'
 NeoBundle 'LucHermitte/local_vimrc'
 
+NeoBundle 'neoclide/coc.nvim', { 'rev' : 'release' }
+
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
-
-
-"" Javascript Bundle
-NeoBundle 'kchmck/vim-coffee-script', {
-    \ 'autoload' : {
-       \ 'filename_patterns' : [ "\.coffee$", "\.cjsx$" ]
-    \ }
-  \ }
-NeoBundle 'ternjs/tern_for_vim', { 'build': 'npm install' }
-NeoBundle 'mhartington/nvim-typescript', { 'build': './install.sh'}
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'sbdchd/neoformat'
-
-"" Ruby Bundle
-NeoBundle "vim-ruby/vim-ruby"
 
 "" HTML Bundle
 NeoBundle 'vim-scripts/HTML-AutoCloseTag'
@@ -110,18 +87,6 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-haml'
 
 "" Haskell Bundle
-" NeoBundle 'Shougo/vimproc.vim', {
-"       \   'build' : {
-"       \     'windows' : 'tools\\update-dll-mingw',
-"       \     'cygwin' : 'make -f make_cygwin.mak',
-"       \     'mac' : 'make -f make_mac.mak',
-"       \     'linux' : 'make',
-"       \     'unix' : 'gmake',
-"       \   }
-"       \ }
-" NeoBundle 'eagletmt/ghcmod-vim'
-" NeoBundle 'dag/vim2hs'
-NeoBundle 'neoclide/coc.nvim'
 NeoBundle 'vmchale/dhall-vim'
 NeoBundle 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 "" TODO Also check out https://github.com/haskell/haskell-ide-engine#using-hie-with-vim-or-neovim
@@ -140,23 +105,11 @@ NeoBundle 'guns/vim-clojure-highlight'
 NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-classpath'
 
-"" Prose editing
-" NeoBundle 'godlygeek/tabular'
-" NeoBundle 'plasticboy/vim-markdown'
-" NeoBundle 'reedes/vim-pencil'
-" NeoBundle 'reedes/vim-wordy'
-
-"" Elixir
-NeoBundle 'elixir-editors/vim-elixir'
-NeoBundle 'slashmili/alchemist.vim'
-NeoBundle 'mhinz/vim-mix-format'
-
 "" Java
 NeoBundle 'artur-shaik/vim-javacomplete2'
 
 "" Swift & iOS
 NeoBundle 'keith/swift.vim'
-" NeoBundle 'landaire/deoplete-swift'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local.bundles"))
@@ -184,13 +137,6 @@ map <silent> - :call OpenDirvish()<CR>
 
 " Set up bindings for sub-word motions
 let g:wordmotion_prefix = ','
-
-let g:neomake_javascript_enabled_makers = ['eslint']
-" Configure neomake to run on every save
-augroup neomake-autosave
-  autocmd!
-  au BufWritePost * Neomake
-augroup END
 
 "*****************************************************************************
 "" Basic Setup
@@ -321,10 +267,6 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-if exists("*gutentags#statusline")
-  set statusline+=%{gutentags#statusline()}
-endif
-
 " vim-airline
 let g:airline_theme = 'base16_3024'
 let g:airline#extensions#branch#enabled = 1
@@ -388,34 +330,10 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-"" js/coffee/html
-augroup vimrc-js
-  autocmd!
-  autocmd FileType coffee setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-  autocmd FileType javascript setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-  autocmd FileType javascript.jsx setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-  autocmd FileType html setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-
-  autocmd BufWritePre *.js,*.ts undojoin | Neoformat
-augroup END
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_typescript = ['prettier']
-
 "" Haskell
-" Add Stack binaries to path to use e.g. intero
-function! AddStackPath()
-  let stack_path = system("stack path --bin-path")
-  if v:shell_error
-    return 0
-  endif
-  let $PATH = stack_path
-endfunction
-
 augroup vimrc-haskell
   autocmd!
   autocmd FileType haskell setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-  " autocmd FileType haskell call AddStackPath()
-  " autocmd FileType haskell setlocal formatprg=brittany
 augroup END
 
 "*****************************************************************************
@@ -568,21 +486,6 @@ noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=lin
 
 "" Custom configs
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:gutentags_ctags_executable = 'ctags-ignore'
-let g:gutentags_project_root = ['package.json', 'Brocfile.js', 'Capfile', 'Rakefile', 'bower.json', '.ruby-version', 'Gemfile', 'stack.yaml']
-let g:gutentags_project_info = []
-call add(g:gutentags_project_info, {'type': 'ruby', 'file': 'Gemfile'})
-call add(g:gutentags_project_info, {'type': 'javascript', 'file': 'package.json'})
-call add(g:gutentags_project_info, {'type': 'haskell', 'file': 'stack.yaml'})
-" Use -R because es-ctags doesn't support --options used by Gutentags to
-" specify the recursiveness
-let g:gutentags_ctags_executable_javascript = 'es-ctags -R'
-let g:gutentags_ctags_executable_haskell = 'haskell-ctags'
-
 augroup vimrc-go
   autocmd!
   " Fix vim-go leaving scratch buffers open
@@ -595,23 +498,10 @@ augroup vimrc-go
   au FileType go nmap <Leader>ge <Plug>(go-rename)
 
   au FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-
-  " au FileType go let g:deoplete#disable_auto_complete = 1
 augroup END
 
 
 let g:javascript_enable_domhtmlcss = 1
-
-
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
-augroup vimrc-ruby
-  autocmd!
-  autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd FileType ruby setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
-augroup END
 
 "" Enable automatic word wrapping
 set formatoptions+=t
@@ -662,13 +552,6 @@ augroup vimrc-elixir
   " e.g. Go.
   au FileType elixir let test#filename_modifier = ":p"
 augroup END
-let g:neomake_elixir_dialyzer_maker = {
-    \ 'exe': 'mix',
-    \ 'args': ['dialyzer'],
-    \ 'append_file': 0
-    \ }
-let g:neomake_elixir_enabled_makers = ['mix', 'credo', 'dialyzer']
-let g:mix_format_on_save = 1
 
 "" EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -680,22 +563,13 @@ nmap ga <Plug>(EasyAlign)
 highlight ColorColumn ctermbg=red guibg=#ed2939
 call matchadd('ColorColumn', '\%121v', 100)
 
-" function! Prose()
-"   call pencil#init()
-
-"   setlocal spell
-"   " Suggest spelling fixes
-"   nnoremap <localleader>s ea<C-X><C-S>
-" endfunction
-" Allow calling it directly as well
-" command! -nargs=0 Prose call Prose()
-
-" augroup vim-text
-"   autocmd!
-"   au FileType markdown,gitcommit,text call Prose()
-" augroup END
 set spelllang=en_us
 set spellfile=~/.config/nvim/spell/mydict.utf-8.add
+
+augroup gitcommit
+  autocmd!
+  au FileType gitcommit setlocal spell
+augroup END
 
 "" Autosave
 augroup autosave
@@ -749,9 +623,6 @@ augroup vimrc-clojure
   au Syntax clojure RainbowParenthesesLoadBraces
   au FileType clojure nmap <leader>z :call OpenClojureREPL()<CR>
 augroup END
-
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_frontmatter = 1
 
 augroup vimrc-java
   autocmd!
