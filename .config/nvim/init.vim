@@ -125,15 +125,12 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" Set up binding for dirvish
-function! OpenDirvish()
-  if bufname('%') == ''
-    :Dirvish
-  else
-    :Dirvish %
-  endif
-endfunction
-map <silent> - :call OpenDirvish()<CR>
+augroup dirvish_config
+  autocmd!
+  autocmd FileType dirvish nmap - <plug>(dirvish_up)
+augroup END
+
+map <silent> - :Dirvish<CR>
 
 " Set up bindings for sub-word motions
 let g:wordmotion_prefix = ','
