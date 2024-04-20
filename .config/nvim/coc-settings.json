@@ -15,14 +15,7 @@
       "filetypes": [
         "haskell",
         "lhaskell"
-      ],
-      "initializationOptions": {
-        "languageServerHaskell": {
-          "hlintOn": true,
-          "maxNumberOfProblems": 10,
-          "completionSnippetsOn": true
-        }
-      }
+      ]
     },
     "dhall": {
       "command": "stack",
@@ -49,37 +42,6 @@
         "elmAnalyseTrigger": "change" // optional
       }
     },
-    /* "text": { */
-    /*   "command": "unified-language-server", */
-    /*   "args": [ */
-    /*     "--parser=retext-english", */
-    /*     "--stdio" */
-    /*   ], */
-    /*   "filetypes": [ */
-    /*     "text" */
-    /*   ] */
-    /* }, */
-    "markdown": {
-      "command": "unified-language-server",
-      "args": [
-        "--parser=remark-parse",
-        "--stdio"
-      ],
-      "filetypes": [
-        "markdown"
-      ],
-      "trace.server": "verbose",
-      "settings": {
-        "unified-language-server": {
-          "remark-parse": {
-            "plugins": [
-              ["#remark-retext", "#parse-latin"],
-              ["#retext-spell", "#dictionary-en"]
-            ]
-          }
-        }
-      }
-    },
     "purescript": {
       "command": "purescript-language-server",
       "args": ["--stdio"],
@@ -93,7 +55,69 @@
           // etc
         }
       }
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    },
+    "sql": {
+      "command": "sql-language-server",
+      "args": ["up", "--method", "stdio"],
+      // "args": ["up", "--method", "node-ipc"],
+      "filetypes": ["sql", "mysql"],
+      "settings": {
+        "sqlLanguageServer": {
+          "connections": [],
+          "lint": {
+            "rules": {
+              // "align-column-to-the-first": "error",
+              // "column-new-line": "error",
+              // "linebreak-after-clause-keyword": "off",
+              // "reserved-word-case": ["error", "upper"],
+              // "space-surrounding-operators": "error",
+              // "where-clause-new-line": "error",
+              // "align-where-clause-to-the-first": "error"
+            }
+          }
+        }
+      }
     }
+    //,
+    // "ruby-lsp": {
+    //   "command": "ruby-lsp",
+    //   "initializationOptions": {
+    //     "experimentalFeaturesEnabled": false,
+    //     "enabledFeatures": [
+    //       "codeActions",
+    //       "diagnostics",
+    //       "documentHighlights",
+    //       "documentLink",
+    //       "documentSymbols",
+    //       "foldingRanges",
+    //       "formatting",
+    //       "hover",
+    //       "inlayHint",
+    //       "onTypeFormatting",
+    //       "selectionRanges",
+    //       "semanticHighlighting",
+    //       "completion"
+    //     ],
+    //     "formatter": "auto"
+    //   },
+    //   "filetypes": ["ruby"]
+    // }
   },
-  "coc.preferences.formatOnSaveFiletypes": ["purescript"]
+  "codeLens.enable": true,
+  "elixir.pathToElixirLS": "~/private-workspace/elixir-ls/release/language_server.sh",
+  "diagnostic-languageserver.filetypes": {
+    "elixir": ["mix_credo", "mix_credo_compile"],
+    "eelixir": ["mix_credo", "mix_credo_compile"]
+  },
+  // "coc.preferences.formatOnSaveFiletypes": ["purescript"],
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true
+  // "suggest.noselect": true
 }
