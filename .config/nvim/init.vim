@@ -209,10 +209,30 @@ set number
 let no_buffers_menu=1
 set termguicolors
 if !exists('g:not_finsh_neobundle')
-  " set background=light
-  " colorscheme base16-paraiso
-  set background=dark
-  colorscheme base16-3024
+  if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name')
+      \ || g:colors_name != 'base16-$BASE16_THEME')
+    " let base16colorspace=256
+    colorscheme base16-$BASE16_THEME
+
+    " Airline
+    " let g:airline_theme = 'base16_$BASE16_THEME'
+    let g:airline_theme = 'base16_' . substitute($BASE16_THEME, "-", "_", "")
+  else
+    " set background=light
+    " colorscheme base16-summerfruit-light
+    " set background=dark
+    " colorscheme base16-3024
+
+    " Airline
+    " let g:airline_theme = 'base16_summerfruit_light'
+    " let g:airline_theme = 'base16_3024'
+  endif
+  if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
+    " let base16colorspace=256
+    source $HOME/.config/tinted-theming/set_theme.vim
+    let g:airline_theme = substitute(substitute(execute('colorscheme'), "-", "_", "g"), '\n', "", "")
+  endif
 endif
 
 set mousemodel=popup
@@ -268,7 +288,6 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'base16_3024'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
