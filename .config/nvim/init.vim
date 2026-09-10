@@ -50,7 +50,9 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
 "" Color
-NeoBundle 'chriskempson/base16-vim'
+" Successor to base16-vim, adding the base24 schemes. Keeps the base16-<name>
+" colorscheme names, which is what set_theme.vim writes.
+NeoBundle 'tinted-theming/tinted-vim'
 " Enable ansi escape seq colors
 NeoBundle 'vim-scripts/AnsiEsc.vim'
 
