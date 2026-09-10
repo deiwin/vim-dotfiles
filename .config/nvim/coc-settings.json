@@ -64,8 +64,8 @@
     },
     "sql": {
       "command": "sql-language-server",
-      "args": ["up", "--method", "stdio"],
-      // "args": ["up", "--method", "node-ipc"],
+      // "args": ["up", "--method", "stdio"],
+      "args": ["up", "--method", "node-ipc"],
       "filetypes": ["sql", "mysql"],
       "settings": {
         "sqlLanguageServer": {
