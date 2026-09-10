@@ -116,6 +116,8 @@
   },
   "codeLens.enable": true,
   "elixir.pathToElixirLS": "~/private-workspace/elixir-ls/release/language_server.sh",
+  "elixirLS.stdlibSrcDir": "/Users/deiwin/.asdf/installs/elixir/1.17",
+  "elixir.trace.server": "verbose",
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],
     "eelixir": ["mix_credo", "mix_credo_compile"]
