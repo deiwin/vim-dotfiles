@@ -582,9 +582,9 @@ call matchadd('ColorColumn', '\%121v', 100)
 set spelllang=en_us
 set spellfile=~/.config/nvim/spell/mydict.utf-8.add
 
-augroup gitcommit
+augroup text
   autocmd!
-  au FileType gitcommit setlocal spell
+  au FileType gitcommit,markdown setlocal spell
 augroup END
 
 "" Autosave
