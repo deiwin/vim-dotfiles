@@ -6,6 +6,8 @@
 !/.config/markdownlint/style.rb
 !/.config/nvim
 !/.config/nvim/init.vim
+!/.config/nvim/lua
+!/.config/nvim/lua/config.lua
 !/.config/nvim/spell
 !/.config/nvim/spell/mydict.utf-8.add
 !/.config/zshrc.d

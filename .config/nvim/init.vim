@@ -77,6 +77,7 @@ NeoBundle 'LucHermitte/lh-vim-lib'
 NeoBundle 'LucHermitte/local_vimrc'
 
 NeoBundle 'neoclide/coc.nvim', { 'rev' : 'release' }
+NeoBundle 'neovim/nvim-lspconfig'
 
 "" Go Lang Bundle
 NeoBundle "fatih/vim-go"
@@ -649,6 +650,7 @@ augroup vimrc-java
 augroup END
 
 
+
 "" Coc settings
 " Give more space for displaying messages.
 " set cmdheight=2
@@ -845,3 +847,5 @@ function GitPrettyRef(type = '') abort
     let &selection = sel_save
   endtry
 endfunction
+
+lua require('config')
