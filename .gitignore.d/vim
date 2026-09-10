@@ -10,6 +10,9 @@
 !/.config/nvim/lua/config.lua
 !/.config/nvim/nvim-pack-lock.json
 !/.config/nvim/vim-test-nx-local.patch
+!/.config/tinted-theming
+!/.config/tinted-theming/hooks
+!/.config/tinted-theming/hooks/base16-vim.sh
 !/.config/nvim/spell
 !/.config/nvim/spell/mydict.utf-8.add
 !/.config/zshrc.d
