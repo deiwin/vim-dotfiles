@@ -235,6 +235,40 @@ if !exists('g:not_finsh_neobundle')
   endif
 endif
 
+" A theme switched elsewhere (the base16_* shell aliases) only rewrites
+" set_theme.vim; nothing in that path reaches an editor that is already
+" running. Re-read the file when the pane regains focus, which is how a theme
+" changed in another pane arrives here. Needs `focus-events on` in tmux.
+" While the theme name is unchanged the sourced file short-circuits before it
+" applies the colorscheme, and comparing g:colors_name keeps AirlineTheme from
+" running, so an ordinary focus change repaints nothing.
+function! s:ReloadBase16Theme() abort
+  let l:path = expand("$HOME/.config/tinted-theming/set_theme.vim")
+  if !filereadable(l:path)
+    return
+  endif
+  let l:before = get(g:, 'colors_name', '')
+  execute 'source' l:path
+  if get(g:, 'colors_name', '') ==# l:before
+    return
+  endif
+  " g:airline_theme is only consulted while airline loads, so a statusline that
+  " is already up needs the command. vim-airline-themes ships far fewer base16
+  " themes than tinted-shell has schemes, so a missing one stays quiet rather
+  " than throwing on every theme switch.
+  if exists(':AirlineTheme') == 2
+    silent! execute 'AirlineTheme'
+      \ substitute(substitute(execute('colorscheme'), "-", "_", "g"), '\n', "", "")
+  endif
+endfunction
+
+command! Base16Reload call s:ReloadBase16Theme()
+
+augroup base16_live_reload
+  autocmd!
+  autocmd FocusGained * call s:ReloadBase16Theme()
+augroup END
+
 set mousemodel=popup
 " Disable mouse selection entering the Visual mode
 "set mouse-=a
