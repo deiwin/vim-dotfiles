@@ -125,6 +125,10 @@
   // "coc.preferences.formatOnSaveFiletypes": ["purescript"],
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
-  "solargraph.hover": true
+  "solargraph.hover": true,
+  // "solargraph.useBundler": true,
+  // "solargraph.bundlerPath": "/Users/deiwin/.asdf/shims/bundle",
+  "solargraph.commandPath": "/Users/deiwin/.asdf/shims/solargraph",
   // "suggest.noselect": true
+  "outline.sortBy": "position"
 }
