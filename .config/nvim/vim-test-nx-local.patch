@@ -1,0 +1,35 @@
+diff --git i/autoload/test/javascript/nx.vim w/autoload/test/javascript/nx.vim
+index 10c9be0..8bd245d 100644
+--- i/autoload/test/javascript/nx.vim
++++ w/autoload/test/javascript/nx.vim
+@@ -12,15 +12,26 @@ function! test#javascript#nx#test_file(file) abort
+   endif
+ endfunction
+ 
+-function! test#javascript#nx#build_position(type, position) abort
+-  let project = ''
+-
++function! s:local_project_name() abort
+   let l:project_json = findfile('project.json', '.;')
+   if filereadable(project_json)
+     let l:project_json_file = readfile(project_json)
+     if exists('*json_decode')
+-      let project = json_decode(join(project_json_file, ''))['name']
++      let l:project_dict = json_decode(join(project_json_file, ''))
++      if has_key(project_dict, 'name')
++        return project_dict['name']
++      endif
+     endif
++  endif
++  return 0
++endfunction
++
++function! test#javascript#nx#build_position(type, position) abort
++  let project = ''
++
++  let l:maybe_local_project_name = s:local_project_name()
++  if (maybe_local_project_name)
++    let project = maybe_local_project_name
+   elseif filereadable('workspace.json')
+     let l:workpaces = readfile('workspace.json')
+     if exists('*json_decode')

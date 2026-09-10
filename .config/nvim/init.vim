@@ -12,6 +12,60 @@
 " :lua vim.pack.update(nil, {offline = true})       list what is installed
 
 lua << EOF
+-- vim.pack stashes local changes before it checks out a new revision and never
+-- pops them, so a plugin we patch locally comes back as upstream with the
+-- change silently inactive.
+--
+-- vim-test indexes an Nx project.json for "name" without checking the key is
+-- there, which aborts the test command in a project that omits it; patched, it
+-- falls back to workspace.json. The patch file is what an install has to apply,
+-- since a machine cloning this config has no stash to restore from.
+local local_patches = {
+  ['vim-test'] = vim.fn.stdpath('config') .. '/vim-test-nx-local.patch',
+}
+
+vim.api.nvim_create_autocmd('PackChanged', {
+  group = vim.api.nvim_create_augroup('pack_local_patches', {}),
+  callback = function(ev)
+    local git = function(...)
+      return vim.system({ 'git', '-C', ev.data.path, ... }, { text = true }):wait()
+    end
+    local warn = function(msg)
+      vim.notify('vim.pack: ' .. msg, vim.log.levels.WARN)
+    end
+
+    if ev.data.kind == 'update' then
+      -- Restore only the stash this update took. An older one is work someone
+      -- parked deliberately, and reviving it unasked would be a surprise.
+      -- Popping keeps any local edit beyond the patch file and leaves no stash
+      -- behind, so `git stash list` in the plugin stays empty.
+      -- git prefixes the message it was given with "On <branch>:", and vim.pack
+      -- keeps plugins on a detached HEAD, so the subject reads
+      -- "On (no branch): vim.pack: <timestamp> Stash before checkout".
+      local top = git('stash', 'list', '--max-count=1', '--format=%gs').stdout or ''
+      if not top:find('vim%.pack: .* Stash before checkout') then
+        return
+      end
+      if git('stash', 'pop', '--quiet').code == 0 then
+        return
+      end
+      -- A conflicted pop writes markers into the plugin's source, breaking it
+      -- outright. Discard that and leave the stash, which still holds the change.
+      git('checkout', '--', '.')
+      warn(('%s has local changes that no longer apply; they are in its git stash')
+        :format(ev.data.spec.name))
+    elseif ev.data.kind == 'install' then
+      local patch = local_patches[ev.data.spec.name]
+      if patch ~= nil then
+        local res = git('apply', patch)
+        if res.code ~= 0 then
+          warn(('could not apply %s\n%s'):format(patch, res.stderr))
+        end
+      end
+    end
+  end,
+})
+
 local gh = function(repo, opts)
   return vim.tbl_extend('error', { src = 'https://github.com/' .. repo }, opts or {})
 end
@@ -59,7 +113,7 @@ vim.pack.add({
   gh('tmux-plugins/vim-tmux'),
   gh('benmills/vimux'),
 
-  -- Tests
+  -- Tests. Carries a local patch, restored by the PackChanged hook above.
   gh('vim-test/vim-test'),
 
   -- Per-directory config, whitelisted to ~/salemove further down
