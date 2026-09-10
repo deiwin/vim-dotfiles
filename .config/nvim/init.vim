@@ -239,7 +239,7 @@ set mousemodel=popup
 set mouse=a
 set t_Co=256
 set nocursorline
-set guioptions=egmrti
+" set guioptions=egmrti
 set gfn=Monospace\ 10
 
 if has("gui_running")
