@@ -375,6 +375,9 @@ set splitright
 " noremap <Leader>gb :Git blame<CR>
 " noremap <Leader>gd :Gvdiff<CR>
 " noremap <Leader>gr :Git remove<CR>
+noremap <Leader>gl :Git log --stat<CR>
+noremap <Leader>vgl :vert Git log --stat<CR>
+noremap <Leader>glg :vert Git log --topo-order --graph --pretty=format:'%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'<CR>
 " Remap hunk staging etc to not clash with split navigation's <leader>h
 "GitGutterStageHunk
 nmap <leader>cs <Plug>(GitGutterStageHunk)
