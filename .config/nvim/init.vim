@@ -1,132 +1,100 @@
 "*****************************************************************************
-"" NeoBundle core
+"" Plugins
 "*****************************************************************************
 
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+" Managed by vim.pack, built into Nvim. Plugins live under
+" stdpath('data')/site/pack/core/opt and each one's revision is recorded in
+" ~/.config/nvim/nvim-pack-lock.json.
+"
+" :lua vim.pack.update()                            update all, review, :w to accept
+" :lua vim.pack.update({'name'})                    update one
+" :lua vim.pack.update(nil, {target = 'lockfile'})  go back to the recorded revisions
+" :lua vim.pack.update(nil, {offline = true})       list what is installed
 
-  " Required:
-  set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
-endif
+lua << EOF
+local gh = function(repo, opts)
+  return vim.tbl_extend('error', { src = 'https://github.com/' .. repo }, opts or {})
+end
 
-let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
+vim.pack.add({
+  -- Files and navigation
+  gh('justinmk/vim-dirvish'),
+  gh('tpope/vim-eunuch'),
+  gh('ctrlpvim/ctrlp.vim'),
+  gh('mileszs/ack.vim'),
+  gh('junegunn/fzf'),
 
-if !filereadable(neobundle_readme)
-  echo "Installing NeoBundle..."
-  echo ""
-  silent !mkdir -p ~/.config/nvim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim/
-  let g:not_finsh_neobundle = "yes"
-endif
+  -- Editing
+  gh('tpope/vim-commentary'),
+  gh('tpope/vim-repeat'),
+  gh('tpope/vim-surround'),
+  gh('wellle/targets.vim'),
+  gh('michaeljsmith/vim-indent-object'),
+  gh('junegunn/vim-easy-align'),
+  gh('chaoren/vim-wordmotion'),
+  gh('bronson/vim-trailing-whitespace'),
+  gh('haya14busa/incsearch.vim'),
+  gh('vim-scripts/vis'),
+  -- Render ANSI escape sequences as colours
+  gh('vim-scripts/AnsiEsc.vim'),
 
-" Required:
-call neobundle#begin(expand('~/.config/nvim/bundle/'))
+  -- Git
+  gh('tpope/vim-fugitive'),
+  gh('airblade/vim-gitgutter'),
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+  -- Interface
+  gh('vim-airline/vim-airline'),
+  gh('vim-airline/vim-airline-themes'),
+  gh('junegunn/limelight.vim'),
 
-"*****************************************************************************
-"" NeoBundle install packages
-"*****************************************************************************
-NeoBundle 'justinmk/vim-dirvish'
-" For useful file/dir commands
-NeoBundle 'tpope/vim-eunuch'
+  -- Colour. Ships both scheme families, named base16-<name> and
+  -- base24-<name>; set_theme.vim writes the base16-<name> form.
+  gh('tinted-theming/tinted-vim'),
 
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'vim-scripts/CSApprox'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'vim-scripts/vis'
+  -- Sessions
+  gh('xolox/vim-misc'),
+  gh('xolox/vim-session'),
 
-"" Vim-Session
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-session'
+  -- tmux
+  gh('tmux-plugins/vim-tmux'),
+  gh('benmills/vimux'),
 
-"" Color
-" Successor to base16-vim, adding the base24 schemes. Keeps the base16-<name>
-" colorscheme names, which is what set_theme.vim writes.
-NeoBundle 'tinted-theming/tinted-vim'
-" Enable ansi escape seq colors
-NeoBundle 'vim-scripts/AnsiEsc.vim'
+  -- Tests
+  gh('vim-test/vim-test'),
 
-"" Custom bundles
-NeoBundle 'pearofducks/ansible-vim'
-NeoBundle 'junegunn/limelight.vim'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'wellle/targets.vim'
-NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-NeoBundle 'tmux-plugins/vim-tmux'
-"" Broken on M1 currently for some reason
-"" NeoBundle 'karlbright/qfdo.vim'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'janko-m/vim-test'
-NeoBundle 'benmills/vimux'
-NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'superbrothers/vim-vimperator'
-NeoBundle 'haya14busa/incsearch.vim'
+  -- Per-directory config, whitelisted to ~/salemove further down
+  gh('LucHermitte/lh-vim-lib'),
+  gh('LucHermitte/local_vimrc'),
 
-NeoBundle 'chaoren/vim-wordmotion'
+  -- Language servers and completion
+  gh('neoclide/coc.nvim', { version = 'release' }),
+  gh('neovim/nvim-lspconfig'),
 
-NeoBundle 'LucHermitte/lh-vim-lib'
-NeoBundle 'LucHermitte/local_vimrc'
+  -- Languages. Nvim's runtime ships no elixir syntax, so vim-elixir is what
+  -- highlights the language we work in, heex included.
+  gh('elixir-editors/vim-elixir'),
+  gh('fatih/vim-go'),
+  gh('vmchale/dhall-vim'),
+  gh('pearofducks/ansible-vim'),
+  gh('vim-scripts/HTML-AutoCloseTag'),
+  gh('hail2u/vim-css3-syntax'),
+  gh('tpope/vim-haml'),
+  gh('keith/swift.vim'),
+  gh('artur-shaik/vim-javacomplete2'),
 
-NeoBundle 'neoclide/coc.nvim', { 'rev' : 'release' }
-NeoBundle 'neovim/nvim-lspconfig'
+  -- Scheme, Clojure and other Lisp-y things
+  gh('guns/vim-sexp'),
+  gh('tpope/vim-sexp-mappings-for-regular-people'),
+  gh('kien/rainbow_parentheses.vim'),
+  gh('jpalardy/vim-slime'),
+  gh('guns/vim-clojure-static'),
+  gh('guns/vim-clojure-highlight'),
+  gh('tpope/vim-fireplace'),
+  gh('tpope/vim-classpath'),
+})
+EOF
 
-"" Go Lang Bundle
-NeoBundle "fatih/vim-go"
-
-"" HTML Bundle
-NeoBundle 'vim-scripts/HTML-AutoCloseTag'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'tpope/vim-haml'
-
-"" Haskell Bundle
-NeoBundle 'vmchale/dhall-vim'
-NeoBundle 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-"" TODO Also check out https://github.com/haskell/haskell-ide-engine#using-hie-with-vim-or-neovim
-NeoBundle 'junegunn/fzf'
-NeoBundle 'monkoose/fzf-hoogle.vim'
-
-"" Scheme and other Lisp-y things
-NeoBundle 'guns/vim-sexp'
-NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'jpalardy/vim-slime'
-
-"" Clojure
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'guns/vim-clojure-highlight'
-NeoBundle 'tpope/vim-fireplace'
-NeoBundle 'tpope/vim-classpath'
-
-"" Java
-NeoBundle 'artur-shaik/vim-javacomplete2'
-
-"" Swift & iOS
-NeoBundle 'keith/swift.vim'
-
-"" Include user's extra bundle
-if filereadable(expand("~/.config/nvim/local.bundles"))
-  source ~/.config/nvim/local.bundles
-endif
-
-call neobundle#end()
-
-" Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 augroup dirvish_config
   autocmd!
@@ -208,31 +176,29 @@ set number
 
 let no_buffers_menu=1
 set termguicolors
-if !exists('g:not_finsh_neobundle')
-  if exists('$BASE16_THEME')
-      \ && (!exists('g:colors_name')
-      \ || g:colors_name != 'base16-$BASE16_THEME')
-    " let base16colorspace=256
-    colorscheme base16-$BASE16_THEME
+if exists('$BASE16_THEME')
+    \ && (!exists('g:colors_name')
+    \ || g:colors_name != 'base16-$BASE16_THEME')
+  " let base16colorspace=256
+  colorscheme base16-$BASE16_THEME
 
-    " Airline
-    " let g:airline_theme = 'base16_$BASE16_THEME'
-    let g:airline_theme = 'base16_' . substitute($BASE16_THEME, "-", "_", "")
-  else
-    " set background=light
-    " colorscheme base16-summerfruit-light
-    " set background=dark
-    " colorscheme base16-3024
+  " Airline
+  " let g:airline_theme = 'base16_$BASE16_THEME'
+  let g:airline_theme = 'base16_' . substitute($BASE16_THEME, "-", "_", "")
+else
+  " set background=light
+  " colorscheme base16-summerfruit-light
+  " set background=dark
+  " colorscheme base16-3024
 
-    " Airline
-    " let g:airline_theme = 'base16_summerfruit_light'
-    " let g:airline_theme = 'base16_3024'
-  endif
-  if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
-    " let base16colorspace=256
-    source $HOME/.config/tinted-theming/set_theme.vim
-    let g:airline_theme = substitute(substitute(execute('colorscheme'), "-", "_", "g"), '\n', "", "")
-  endif
+  " Airline
+  " let g:airline_theme = 'base16_summerfruit_light'
+  " let g:airline_theme = 'base16_3024'
+endif
+if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
+  " let base16colorspace=256
+  source $HOME/.config/tinted-theming/set_theme.vim
+  let g:airline_theme = substitute(substitute(execute('colorscheme'), "-", "_", "g"), '\n', "", "")
 endif
 
 " A theme switched elsewhere (the base16_* shell aliases) only rewrites
@@ -274,31 +240,9 @@ set mousemodel=popup
 "set mouse-=a
 " But I need mouse=a for scolling to work in tmux
 set mouse=a
-set t_Co=256
 set nocursorline
 " set guioptions=egmrti
 set gfn=Monospace\ 10
-
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
-
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-endif
-
-if &term =~ '256color'
-  set t_ut=
-endif
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0

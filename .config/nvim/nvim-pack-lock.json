@@ -1,0 +1,197 @@
+{
+  "plugins": {
+    "AnsiEsc.vim": {
+      "rev": "d2bb7878622e4c16203acf1c92a0f4bc7ac58003",
+      "src": "https://github.com/vim-scripts/AnsiEsc.vim"
+    },
+    "HTML-AutoCloseTag": {
+      "rev": "af2c6d8b442d07ceb4567300d8ad749ce80d065a",
+      "src": "https://github.com/vim-scripts/HTML-AutoCloseTag"
+    },
+    "ack.vim": {
+      "rev": "36e40f9ec91bdbf6f1adf408522a73a6925c3042",
+      "src": "https://github.com/mileszs/ack.vim"
+    },
+    "ansible-vim": {
+      "rev": "6c42a448e30bc48ae98792bce38970148b0e3c9d",
+      "src": "https://github.com/pearofducks/ansible-vim"
+    },
+    "coc.nvim": {
+      "rev": "1ceb010a202cc9e33aece04811de23a909addf5d",
+      "src": "https://github.com/neoclide/coc.nvim",
+      "version": "'release'"
+    },
+    "ctrlp.vim": {
+      "rev": "0065942ef13ce28293e2b26cb622d035da050b44",
+      "src": "https://github.com/ctrlpvim/ctrlp.vim"
+    },
+    "dhall-vim": {
+      "rev": "bd9fd99f21dbc7174fb728a21d04e073ef7dd930",
+      "src": "https://github.com/vmchale/dhall-vim"
+    },
+    "fzf": {
+      "rev": "b224480a98a40c670c8ed89abd52d4216a470032",
+      "src": "https://github.com/junegunn/fzf"
+    },
+    "incsearch.vim": {
+      "rev": "c83de6d1ac31d173d7c3ffee0ad61dc643ee4f08",
+      "src": "https://github.com/haya14busa/incsearch.vim"
+    },
+    "lh-vim-lib": {
+      "rev": "9435c1105d05f4cb7f18853050c428a895b1d672",
+      "src": "https://github.com/LucHermitte/lh-vim-lib"
+    },
+    "limelight.vim": {
+      "rev": "617064e84e896f6f36b5e559f8e6486d632f68ed",
+      "src": "https://github.com/junegunn/limelight.vim"
+    },
+    "local_vimrc": {
+      "rev": "723c6b683de8f4c9fa98fa44b83ca4099713e75a",
+      "src": "https://github.com/LucHermitte/local_vimrc"
+    },
+    "nvim-lspconfig": {
+      "rev": "ac9d2f7c4757db6320cab6697fe73e5e8adb2457",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "rainbow_parentheses.vim": {
+      "rev": "eb8baa5428bde10ecc1cb14eed1d6e16f5f24695",
+      "src": "https://github.com/kien/rainbow_parentheses.vim"
+    },
+    "swift.vim": {
+      "rev": "75990ecbcaccae5cfb77fb847a7bfa0b925b858d",
+      "src": "https://github.com/keith/swift.vim"
+    },
+    "targets.vim": {
+      "rev": "6325416da8f89992b005db3e4517aaef0242602e",
+      "src": "https://github.com/wellle/targets.vim"
+    },
+    "tinted-vim": {
+      "rev": "66829e04041ceba72a9006d1c6c9d0c818e2b3dd",
+      "src": "https://github.com/tinted-theming/tinted-vim"
+    },
+    "vim-airline": {
+      "rev": "ae24f4aca06731d5d7224df1fc5415975331b214",
+      "src": "https://github.com/vim-airline/vim-airline"
+    },
+    "vim-airline-themes": {
+      "rev": "77aab8c6cf7179ddb8a05741da7e358a86b2c3ab",
+      "src": "https://github.com/vim-airline/vim-airline-themes"
+    },
+    "vim-classpath": {
+      "rev": "88a7e8a62d4603e79787cb381fc5cac562c29bb0",
+      "src": "https://github.com/tpope/vim-classpath"
+    },
+    "vim-clojure-highlight": {
+      "rev": "9ac6cb8fef04b2c243377adb671324a60952aee0",
+      "src": "https://github.com/guns/vim-clojure-highlight"
+    },
+    "vim-clojure-static": {
+      "rev": "fae5710a0b79555fe3296145be4f85148266771a",
+      "src": "https://github.com/guns/vim-clojure-static"
+    },
+    "vim-commentary": {
+      "rev": "64a654ef4a20db1727938338310209b6a63f60c9",
+      "src": "https://github.com/tpope/vim-commentary"
+    },
+    "vim-css3-syntax": {
+      "rev": "2dc629853c1dcc3b87a63fe399813e99aca807b4",
+      "src": "https://github.com/hail2u/vim-css3-syntax"
+    },
+    "vim-dirvish": {
+      "rev": "4cbf39ce024c57f700c4d5502cc172ea91d69360",
+      "src": "https://github.com/justinmk/vim-dirvish"
+    },
+    "vim-easy-align": {
+      "rev": "9815a55dbcd817784458df7a18acacc6f82b1241",
+      "src": "https://github.com/junegunn/vim-easy-align"
+    },
+    "vim-elixir": {
+      "rev": "6dff29176eb35e025bc94b262bf6d4e517e11f7d",
+      "src": "https://github.com/elixir-editors/vim-elixir"
+    },
+    "vim-eunuch": {
+      "rev": "929490937745cd96130d3e7948f762f0aa403314",
+      "src": "https://github.com/tpope/vim-eunuch"
+    },
+    "vim-fireplace": {
+      "rev": "5e66509599de92550762cf2681338fc4cd1e71cf",
+      "src": "https://github.com/tpope/vim-fireplace"
+    },
+    "vim-fugitive": {
+      "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
+      "src": "https://github.com/tpope/vim-fugitive"
+    },
+    "vim-gitgutter": {
+      "rev": "90b75207bd9b55d8ac4af15f72b4e935462014d0",
+      "src": "https://github.com/airblade/vim-gitgutter"
+    },
+    "vim-go": {
+      "rev": "47694979496d4bf2e90ce75d95f1dec3f41cbefb",
+      "src": "https://github.com/fatih/vim-go"
+    },
+    "vim-haml": {
+      "rev": "c30ee7d885aa1a1cf17d856ab932de75ab789d5d",
+      "src": "https://github.com/tpope/vim-haml"
+    },
+    "vim-indent-object": {
+      "rev": "8ab36d5ec2a3a60468437a95e142ce994df598c6",
+      "src": "https://github.com/michaeljsmith/vim-indent-object"
+    },
+    "vim-javacomplete2": {
+      "rev": "a716e32bbe36daaed6ebc9aae76525aad9536245",
+      "src": "https://github.com/artur-shaik/vim-javacomplete2"
+    },
+    "vim-misc": {
+      "rev": "3e6b8fb6f03f13434543ce1f5d24f6a5d3f34f0b",
+      "src": "https://github.com/xolox/vim-misc"
+    },
+    "vim-repeat": {
+      "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
+      "src": "https://github.com/tpope/vim-repeat"
+    },
+    "vim-session": {
+      "rev": "9e9a6088f0554f6940c19889d0b2a8f39d13f2bb",
+      "src": "https://github.com/xolox/vim-session"
+    },
+    "vim-sexp": {
+      "rev": "1bf50921308f0188d1c1ecf8a712cc72ab2775e5",
+      "src": "https://github.com/guns/vim-sexp"
+    },
+    "vim-sexp-mappings-for-regular-people": {
+      "rev": "4debb74b0a3e530f1b18e5b7dff98a40b2ad26f1",
+      "src": "https://github.com/tpope/vim-sexp-mappings-for-regular-people"
+    },
+    "vim-slime": {
+      "rev": "305b4d81ff4630af5137fdeffb54aa0fef14761b",
+      "src": "https://github.com/jpalardy/vim-slime"
+    },
+    "vim-surround": {
+      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
+      "src": "https://github.com/tpope/vim-surround"
+    },
+    "vim-test": {
+      "rev": "2676d84c6901e484df00b5d728bd6a345d47ee12",
+      "src": "https://github.com/vim-test/vim-test"
+    },
+    "vim-tmux": {
+      "rev": "cfe76281efc29890548cf9eedd42ad51c7a1faf0",
+      "src": "https://github.com/tmux-plugins/vim-tmux"
+    },
+    "vim-trailing-whitespace": {
+      "rev": "dc22ff46010e55d2c33edd21cdcd14f99e729b6f",
+      "src": "https://github.com/bronson/vim-trailing-whitespace"
+    },
+    "vim-wordmotion": {
+      "rev": "81d9bd298376ab0dc465c85d55afa4cb8d5f47a1",
+      "src": "https://github.com/chaoren/vim-wordmotion"
+    },
+    "vimux": {
+      "rev": "d6cb7f63a8bb428ffc27060b7f83c77fb115589c",
+      "src": "https://github.com/benmills/vimux"
+    },
+    "vis": {
+      "rev": "6a87efbfbd97238716b602c2b53564aa6329b5de",
+      "src": "https://github.com/vim-scripts/vis"
+    }
+  }
+}
